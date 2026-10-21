@@ -1,0 +1,52 @@
+[
+ {
+  "t": 0.6,
+  "cat": "dataswish",
+  "gain_db": -3
+ },
+ {
+  "t": 1.6,
+  "cat": "scan",
+  "gain_db": -6
+ },
+ {
+  "t": 3.33,
+  "cat": "hit",
+  "gain_db": -2
+ },
+ {
+  "t": 5.27,
+  "cat": "flash",
+  "gain_db": -2
+ },
+ {
+  "t": 5.53,
+  "cat": "boom",
+  "gain_db": -1
+ },
+ {
+  "t": 6.4,
+  "cat": "hit",
+  "gain_db": -2
+ },
+ {
+  "t": 7.27,
+  "cat": "hit",
+  "gain_db": -2
+ },
+ {
+  "t": 8.13,
+  "cat": "boom",
+  "gain_db": -2
+ },
+ {
+  "t": 9.2,
+  "cat": "longwhoosh",
+  "gain_db": -3
+ },
+ {
+  "t": 9.47,
+  "cat": "hit",
+  "gain_db": -3
+ }
+]

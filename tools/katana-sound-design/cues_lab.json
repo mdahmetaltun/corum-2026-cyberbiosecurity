@@ -1,0 +1,42 @@
+[
+ {
+  "t": 0.53,
+  "cat": "hit",
+  "gain_db": -1
+ },
+ {
+  "t": 1.67,
+  "cat": "hit",
+  "gain_db": -1
+ },
+ {
+  "t": 2.8,
+  "cat": "hit",
+  "gain_db": -1
+ },
+ {
+  "t": 3.93,
+  "cat": "boom",
+  "gain_db": -1
+ },
+ {
+  "t": 4.6,
+  "cat": "riser",
+  "gain_db": -3
+ },
+ {
+  "t": 5.07,
+  "cat": "flash",
+  "gain_db": -2
+ },
+ {
+  "t": 5.07,
+  "cat": "poweron",
+  "gain_db": -3
+ },
+ {
+  "t": 5.73,
+  "cat": "whoosh",
+  "gain_db": -4
+ }
+]

@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<title>Signal paleti</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400..700&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#0A6F66}a:hover{color:#0B2530}
+</style>
+</helmet>
+<div style="width: 520px; height: 720px; box-sizing: border-box; padding: 40px 40px; display: flex; flex-direction: column; gap: 18px; background: #FFFFFF; color: #0B2530; font-family: 'IBM Plex Sans', Arial, sans-serif">
+<div style="display: flex; flex-direction: column; gap: 4px">
+<p style="margin: 0; font-size: 14px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: #0A6F66">Vaka çalışması · Gün 2 öğle</p>
+<h2 style="margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 36px; font-weight: 600">Signal</h2>
+<p style="margin: 0; font-size: 16px; line-height: 1.4; color: #2F4A52">Petrol zemin üzerinde sinyal turuncusu: olay müdahalesinin alarm dili. Amber kıvılcım, turkuaz güvenli durum.</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; flex-direction: row; gap: 16px; align-items: center"><div style="width: 96px; height: 56px; border-radius: 10px; background: #0B2530"></div><div style="display: flex; flex-direction: column; gap: 2px"><p style="margin: 0; font-size: 17px; font-weight: 600">Petrol</p><p style="margin: 0; font-size: 14px; color: #2F4A52">Koyu zemin · kapak, ara slaytlar</p><p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 14px; color: #2F4A52">#0B2530</p></div></div>
+<div style="display: flex; flex-direction: row; gap: 16px; align-items: center"><div style="width: 96px; height: 56px; border-radius: 10px; background: #F6F9F9; border: 1px solid #D6E3E3; box-sizing: border-box"></div><div style="display: flex; flex-direction: column; gap: 2px"><p style="margin: 0; font-size: 17px; font-weight: 600">Sis beyazı</p><p style="margin: 0; font-size: 14px; color: #2F4A52">Açık zemin · içerik slaytları</p><p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 14px; color: #2F4A52">#F6F9F9</p></div></div>
+<div style="display: flex; flex-direction: row; gap: 16px; align-items: center"><div style="width: 96px; height: 56px; border-radius: 10px; background: #FF6A13"></div><div style="display: flex; flex-direction: column; gap: 2px"><p style="margin: 0; font-size: 17px; font-weight: 600">Sinyal turuncusu</p><p style="margin: 0; font-size: 14px; color: #2F4A52">Ana renk · zaman çizgisi, alarm anları</p><p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 14px; color: #2F4A52">#FF6A13</p></div></div>
+<div style="display: flex; flex-direction: row; gap: 16px; align-items: center"><div style="width: 96px; height: 56px; border-radius: 10px; background: #FFC233"></div><div style="display: flex; flex-direction: column; gap: 2px"><p style="margin: 0; font-size: 17px; font-weight: 600">Amber kıvılcım</p><p style="margin: 0; font-size: 14px; color: #2F4A52">Vurgu · koyu zeminde metin, rozetler</p><p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 14px; color: #2F4A52">#FFC233</p></div></div>
+<div style="display: flex; flex-direction: row; gap: 16px; align-items: center"><div style="width: 96px; height: 56px; border-radius: 10px; background: #12C2B0"></div><div style="display: flex; flex-direction: column; gap: 2px"><p style="margin: 0; font-size: 17px; font-weight: 600">Turkuaz</p><p style="margin: 0; font-size: 14px; color: #2F4A52">Güvenli durum · kontroller, çözümler</p><p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 14px; color: #2F4A52">#12C2B0</p></div></div>
+<div style="display: flex; flex-direction: row; gap: 16px; align-items: center"><div style="width: 96px; height: 56px; border-radius: 10px; background: #0A6F66"></div><div style="display: flex; flex-direction: column; gap: 2px"><p style="margin: 0; font-size: 17px; font-weight: 600">Derin turkuaz · koyu turuncu</p><p style="margin: 0; font-size: 14px; color: #2F4A52">Açık zeminde metin · #C2410C ile</p><p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 14px; color: #2F4A52">#0A6F66</p></div></div>
+</div>
+<p style="margin: 0; font-size: 14px; line-height: 1.45; color: #2F4A52">Turuncu ve turkuaz, kırmızı-yeşil ayrımına dayanmadan "risk / güvenli" ikiliğini taşır.</p>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":520,"height":720}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

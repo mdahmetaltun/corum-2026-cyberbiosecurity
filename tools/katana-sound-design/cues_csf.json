@@ -1,0 +1,67 @@
+[
+ {
+  "t": 0.2,
+  "cat": "type",
+  "gain_db": -4
+ },
+ {
+  "t": 0.87,
+  "cat": "type",
+  "gain_db": -6
+ },
+ {
+  "t": 2.33,
+  "cat": "longwhoosh",
+  "gain_db": -2
+ },
+ {
+  "t": 3.73,
+  "cat": "scan",
+  "gain_db": -6
+ },
+ {
+  "t": 4.13,
+  "cat": "ui_blip",
+  "gain_db": -6
+ },
+ {
+  "t": 4.53,
+  "cat": "ui_blip",
+  "gain_db": -6
+ },
+ {
+  "t": 4.93,
+  "cat": "ui_blip",
+  "gain_db": -6
+ },
+ {
+  "t": 5.93,
+  "cat": "boom",
+  "gain_db": 0
+ },
+ {
+  "t": 5.93,
+  "cat": "flash",
+  "gain_db": -3
+ },
+ {
+  "t": 9.6,
+  "cat": "riser",
+  "gain_db": -2
+ },
+ {
+  "t": 10.95,
+  "cat": "whoosh",
+  "gain_db": -1
+ },
+ {
+  "t": 11.07,
+  "cat": "hit",
+  "gain_db": -2
+ },
+ {
+  "t": 11.47,
+  "cat": "hit",
+  "gain_db": -5
+ }
+]

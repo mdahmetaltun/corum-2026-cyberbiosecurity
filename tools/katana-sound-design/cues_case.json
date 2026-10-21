@@ -1,0 +1,57 @@
+[
+ {
+  "t": 0.67,
+  "cat": "type",
+  "gain_db": -5
+ },
+ {
+  "t": 2.13,
+  "cat": "type",
+  "gain_db": -5
+ },
+ {
+  "t": 3.6,
+  "cat": "ui_error",
+  "gain_db": -4
+ },
+ {
+  "t": 5.07,
+  "cat": "ui_error",
+  "gain_db": -3
+ },
+ {
+  "t": 5.9,
+  "cat": "riser",
+  "gain_db": -3
+ },
+ {
+  "t": 6.53,
+  "cat": "boom",
+  "gain_db": 0
+ },
+ {
+  "t": 6.53,
+  "cat": "glitch",
+  "gain_db": -2
+ },
+ {
+  "t": 6.6,
+  "cat": "corrupt",
+  "gain_db": -4
+ },
+ {
+  "t": 7.53,
+  "cat": "hit",
+  "gain_db": -2
+ },
+ {
+  "t": 11.2,
+  "cat": "whoosh",
+  "gain_db": -2
+ },
+ {
+  "t": 11.4,
+  "cat": "hit",
+  "gain_db": -4
+ }
+]

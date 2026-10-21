@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Case study cover, Signal</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400..700&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#FFC233}a:hover{color:#FFFFFF}
+</style>
+</helmet>
+<div style="position: relative; width: 1280px; height: 720px; overflow: hidden; background: #0B2530; color: #F2F7F6; font-family: 'IBM Plex Sans', Arial, sans-serif">
+<div style="position: absolute; left: 0; top: 0; width: 1280px; height: 6px; display: flex; flex-direction: row">
+<div style="width: 140px; height: 6px; background: #FF6A13"></div>
+<div style="width: 36px; height: 6px; background: {{spark}}"></div>
+</div>
+<div style="position: absolute; left: 85px; top: 66px; display: flex; flex-direction: row; gap: 12px; align-items: center">
+<svg width="38" height="38" viewBox="0 0 56 56" aria-hidden="true"><rect width="56" height="56" rx="14" fill="#12C2B0"></rect><path d="M28 10 L44 16 V28 C44 38 37 44 28 48 C19 44 12 38 12 28 V16 Z" fill="none" stroke="#0B2530" stroke-width="3.5" stroke-linejoin="round"></path><path d="M21 28 L26 33 L36 23" fill="none" stroke="#0B2530" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<p style="margin: 0; font-size: 20px; font-weight: 700; letter-spacing: 0.5px">Cyberbiosecurity</p>
+<p style="margin: 0; padding: 4px 11px; font-size: 15px; font-weight: 700; letter-spacing: 1.5px; color: #0B2530; background: {{spark}}; border-radius: 14px">ÇORUM 2026</p>
+</div>
+<p style="position: absolute; left: 85px; top: 158px; width: 680px; margin: 0; font-size: 16px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: {{spark}}">Day 2 · Tuesday 3 November 2026 · 11:30–12:30</p>
+<h1 style="position: absolute; left: 85px; top: 205px; width: 720px; margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 62px; font-weight: 600; line-height: 1.06; color: #F2F7F6">Institutional Cybersecurity Infrastructure</h1>
+<div style="position: absolute; left: 85px; top: 422px; width: 190px; height: 8px; display: flex; flex-direction: row; gap: 6px">
+<div style="width: 120px; height: 8px; background: #FF6A13; border-radius: 4px"></div>
+<div style="width: 40px; height: 8px; background: {{spark}}; border-radius: 4px"></div>
+<div style="width: 18px; height: 8px; background: #12C2B0; border-radius: 4px"></div>
+</div>
+<p style="position: absolute; left: 85px; top: 452px; width: 640px; margin: 0; font-size: 23px; line-height: 1.35; color: #A9C6C8">A practical case study</p>
+<div style="position: absolute; left: 85px; top: 530px; width: 640px; display: flex; flex-direction: row; gap: 15px; align-items: center">
+<div style="width: 5px; height: 88px; background: {{spark}}; border-radius: 3px"></div>
+<div style="display: flex; flex-direction: column; gap: 3px">
+<p style="margin: 0; font-size: 21px; font-weight: 600">Prof. Dr. Ahmet Altun</p>
+<p style="margin: 0; font-size: 16px; color: #A9C6C8">Sivas Cumhuriyet University · Faculty of Medicine</p>
+<p style="margin: 0; font-size: 16px; color: #A9C6C8">Cyberbiosecurity Training Workshop · Hitit University, Çorum</p>
+</div>
+</div>
+<svg style="position: absolute; left: 800px; top: 140px" width="420" height="420" viewBox="0 0 420 420" role="img" aria-label="Concentric protection rings around the crown jewels">
+<circle cx="210" cy="210" r="200" fill="none" stroke="#12C2B0" stroke-width="4" stroke-dasharray="16 12"></circle>
+<circle cx="210" cy="210" r="152" fill="none" stroke="#12C2B0" stroke-width="10"></circle>
+<circle cx="210" cy="210" r="106" fill="none" stroke="{{spark}}" stroke-width="10"></circle>
+<circle cx="210" cy="210" r="62" fill="#FF6A13"></circle>
+<circle cx="210" cy="10" r="12" fill="{{spark}}"></circle>
+<circle cx="362" cy="210" r="10" fill="#12C2B0"></circle>
+<circle cx="135" cy="302" r="9" fill="#FF6A13"></circle>
+</svg>
+<svg style="position: absolute; left: 0; top: 650px" width="1280" height="50" viewBox="0 0 1280 50" aria-hidden="true"><path d="M0 32H410l16 0 12-24 16 44 17-55 16 47 12-12H790l16 0 12-24 16 44 17-55 16 47 12-12H1280" fill="none" stroke="{{spark}}" stroke-opacity="0.55" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"spark":{"editor":"color","default":"#FFC233","options":["#FFC233","#12C2B0","#C8F53A","#19D3F0"]},"$preview":{"width":1280,"height":720}}'>
+class Component extends DCLogic {
+renderVals() {
+return { spark: this.props.spark ?? '#FFC233' };
+}
+}
+</script>
+</body>
+</html>
