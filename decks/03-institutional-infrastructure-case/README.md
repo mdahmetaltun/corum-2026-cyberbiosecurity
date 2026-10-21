@@ -7,11 +7,12 @@ Prof. Dr. Ahmet Altun · Sivas Cumhuriyet Üniversitesi Tıp Fakültesi
 
 | Klasör | Ne | Claude'daki canlı sunum |
 |---|---|---|
+| `v2-tr-slides/` | **Türkçe** v2: aynı tema, animasyonlar ve geçişler; Türkçe metin, notlar ve açılış filmi (27 slayt) | https://claude.ai/artifact/3CqtbVpFMf3rfaaqEpsrVq |
 | `v2-slides/` | Canlı tema **Signal**, 3B/animasyonlu öğeler, kinetik ara slayt (27 slayt) | https://claude.ai/artifact/FgYoXjr3wPHRCEQ3YH3yzy |
 | `v1-slides/` | Skill Tracker tarzı, lacivert–kâğıt tema (26 slayt) | https://claude.ai/artifact/WmjXMHCXCE4G7ekL1ifjDs |
 | `v0-html/` | İlk tek dosyalık HTML sunum motoru (tarayıcıda açılır) | — |
 | `exports/` | v1'in PPTX ve PDF çıktıları | — |
-| `media/` | Açılış filmleri: `opener-v1.*` (v1), `opener-v2.*` (v2) | — |
+| `media/` | Açılış filmleri: `opener-v1.*` (v1), `opener-v2.*` (v2), `opener-v2-tr.*` (v2 Türkçe) | — |
 
 ## Dosya yapısı (v1 / v2)
 
