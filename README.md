@@ -44,3 +44,26 @@ Claude'a iş verirken "**deck/02-ai-rmf dalında** şunu değiştir" demeniz yet
 | `katana-sound-design/` | v2 açılışlarının ses işaretleri; sesli MP4'ler Higgsfield'da |
 
 Not: Slayt dosyalarındaki `/_blob/…` adresleri Claude'daki ilgili sunuma özeldir; film dosyalarının kendisi `media/` altındadır.
+
+---
+
+# Sivas 2026 · Siber Biyogüvenlik Çalıştayı — sunumlar
+
+Hilton Garden Inn Sivas · 16–17 Kasım 2026 · Kapsid kimliği, Canlı palet (Sora + IBM Plex) · dal: `deck/sivas-2026`
+
+| # | Oturum | Zaman | Klasör | Slayt |
+|---|---|---|---|---|
+| 5 | Açılış ve ön test | 1. Gün · 09:00 | [`decks/05-sivas-acilis-on-test`](decks/05-sivas-acilis-on-test) | 14 |
+| 6 | Biyoteknolojiyi siber hırsızlıktan korumak | 1. Gün · 14:45 | [`decks/06-sivas-siber-hirsizlik`](decks/06-sivas-siber-hirsizlik) | 28 |
+| 7 | Alıştırma 3 · MFA ve donanım anahtarları | 2. Gün · 13:00 | [`decks/07-sivas-mfa-alistirma`](decks/07-sivas-mfa-alistirma) | 22 |
+| 8 | Yeterlik kontrolü ve kapanış | 2. Gün · 15:45 | [`decks/08-sivas-kapanis-yeterlik`](decks/08-sivas-kapanis-yeterlik) | 14 |
+
+Araçlar:
+- `tools/sivas-builder/` — `skit.py` (Canlı palet, Kapsid işareti, izinli x-icon eşlemesi, Türkçe büyük harf), `sanim.py` (yeni canlı öğeler: `capsid` 3B kapsid, `morph` parçacık tipografi morfu, `zoom` yakınlaş/uzaklaş, `scramble`, `exfil`, `otp`, `keytap`, `countdown`), `scommon.py`, `s1–s4_*.py` üreteçler, `spreview.py` (render + taşma kontrolü).
+- `tools/remotion-openers-sivas/` — açılış filmleri: `FilmWorkshop`, `FilmCybertheft`, `FilmMFA`.
+
+```bash
+cd tools/sivas-builder
+S2_STILL=/_blob/<still> S2_CLIP=/_blob/<clip> python3 s2_cybertheft.py <outroot>
+FONTPKGS=<@fontsource + lucide-static node_modules dizini> python3 spreview.py <outroot> <outdir>
+```
