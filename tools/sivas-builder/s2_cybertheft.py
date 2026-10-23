@@ -265,7 +265,7 @@ body += f'<p data-build-in="fade 11 auto" style="position:absolute;left:128px;to
 content(D, "chain", "Saldırı zinciri", "Beş halka, beş kırılma noktası", body, ill="chain",
         notes="""Beş halka, soldan sağa. Önce aşamalar gelir, sonra her birinin altındaki savunma.
 Keşif: saldırgan web sitenizi, yayınlarınızı, personel listenizi okur. İlk erişim: çoğu zaman bir oltalama e-postası ya da çalınmış bir parola. Yerleşme: kalıcı bir hesap ya da uzaktan erişim aracı. Yayılma: paylaşılan sürücüler, cihaz bilgisayarları. Sızma: veri dışarı çıkar ya da şifrelenir.
-Son cümle önemli: erken bir halkayı kırmak yeter. Yarınki MFA alıştırması tam olarak ikinci halkayı kırmak için.""")
+Son cümle önemli: erken bir halkayı kırmak yeter. Bu akşam kurumsal hesabınızda MFA'yı açmak, tam olarak ikinci halkayı kırmak demek.""")
 
 
 # 19 ── exfil
@@ -300,7 +300,7 @@ content(D, "controls", "Savunma", "Laboratuvar için altı kontrol",
         + src("Kodlar NIST CSF 2.0 kategorileridir (NIST CSWP 29, 2024).", top=910),
         ill="shield",
         notes="""Altı kontrol, her biri bir CSF 2.0 kategorisine bağlı. Kodları ezberlemenize gerek yok; bu sabahki oturumlarla bağlantıyı kurmak için yazdım.
-Bir: oltalamaya dayanıklı MFA. Yarın uygulamalı yapacağız. İki: envanter ve yama; listede olmayan cihazı koruyamazsınız. Üç: cihaz bilgisayarları ayrı ağ bölümünde. Dört: en az yetki ve ayrılış süreci, Ohio vakasının dersi. Beş: 3-2-1 yedek ve denenmiş geri yükleme, UCSF'nin dersi. Altı: bildirim kültürü; bildiren teşekkür alır, suçlanmaz.""")
+Bir: oltalamaya dayanıklı MFA; mümkünse donanım anahtarı ya da geçiş anahtarı. İki: envanter ve yama; listede olmayan cihazı koruyamazsınız. Üç: cihaz bilgisayarları ayrı ağ bölümünde. Dört: en az yetki ve ayrılış süreci, Ohio vakasının dersi. Beş: 3-2-1 yedek ve denenmiş geri yükleme, UCSF'nin dersi. Altı: bildirim kültürü; bildiren teşekkür alır, suçlanmaz.""")
 
 # 22 ── third parties
 items = [
@@ -348,7 +348,7 @@ content(D, "turkey", "Türkiye bağlamı", "Hukuk da saati başlatıyor",
         ill="clock",
         notes="""Türkiye bağlamı, kısaca. 7545 sayılı Siber Güvenlik Kanunu 19 Mart 2025'te Resmî Gazete'de yayımlandı; siber güvenlik yükümlülüklerini kanun düzeyine taşıdı.
 KVKK açısından: Kurul'un 2019/10 sayılı kararına göre kişisel veri ihlali gecikmeksizin ve en geç 72 saat içinde bildirilir. Sağlık ve genetik veri özel nitelikli kişisel veri.
-Ana mesaj: 72 saat kısa. Kim karar veriyor, kim arıyor, hangi bilgi toplanıyor? Bunu yarın Dr. Müjdeci'nin masa başı tatbikatında deneyeceğiz.""")
+Ana mesaj: 72 saat kısa. Kim karar veriyor, kim arıyor, hangi bilgi toplanıyor? Bunu yarın sabahki politikalar ve SOP oturumundaki masa başı tatbikatta deneyeceğiz.""")
 
 # 25 ── Monday morning
 STEPS = [("Smartphone", "Kurumsal e-posta ve hesaplarınızda MFA’yı açın."), ("ClipboardList", "Laboratuvarınızdaki cihaz bilgisayarlarının listesini çıkarın."),
@@ -369,7 +369,7 @@ Salona: bunlardan hangisi sizin laboratuvarınızda zaten var? El kaldırma ile 
 
 # 26 ── takeaways + bridge
 @dark("takeaways", """Üç çıkarım. Bir: üniversite laboratuvarları değerli olduğu için hedef; açıklık bir zayıflık değil ama yönetilmesi gereken bir risk. İki: vakaların çoğu aynı kapılardan giriyor: parola, yamasız cihaz, kapatılmamış hesap. Üç: erken halkayı kırmak yeter.
-Günün akışı: 15:30'da Doç. Dr. Taşkıran ile araştırma güvenliği. Yarın 13:00'te Alıştırma 3'te MFA ve donanım anahtarlarını kendi hesaplarınızda kuracağız; telefonunuzu ve dizüstü bilgisayarınızı getirin.""", glow=(V2, P2))
+Günün akışı: 15:30'da Doç. Dr. Taşkıran ile araştırma güvenliği. Yarın 10:30'da Prof. Merey ile laboratuvar politikaları, SOP'ler ve bir olay müdahalesi masa başı tatbikatı.""", glow=(V2, P2))
 def _(i, n):
     s = eyebrow("Üç çıkarım", 210)
     TK = [("Değer hedef çeker.", "Açıklık bir zayıflık değil; yönetilmesi gereken bir risk.", T2),
@@ -378,7 +378,7 @@ def _(i, n):
     for k, (a, b, c) in enumerate(TK):
         s += (f'<div data-build-in="rise {k + 1} auto" style="position:absolute;left:128px;top:{280 + k * 150}px;width:1100px;display:flex;flex-direction:column;gap:8px">'
               f'<p style="font-family:{DISPLAY};font-size:54px;font-weight:800;letter-spacing:-1.5px;color:{c}">{a}</p><p style="font-size:30px;color:{SKY}">{b}</p></div>')
-    nx = [("BUGÜN · 15:30", "Araştırma güvenliği", "Doç. Dr. Ahmet Şevki Taşkıran"), ("YARIN · 13:00", "Alıştırma 3: MFA ve anahtarlar", "Telefon ve dizüstü bilgisayar getirin")]
+    nx = [("BUGÜN · 15:30", "Araştırma güvenliği", "Doç. Dr. Ahmet Şevki Taşkıran"), ("YARIN · 10:30", "Politikalar, SOP’ler ve masa başı tatbikat", "Prof. Dr. Gökçe Merey")]
     for k, (a, b, c) in enumerate(nx):
         s += (f'<div data-build-in="fade {k + 4} auto" style="position:absolute;left:1300px;top:{290 + k * 250}px;width:492px;display:flex;flex-direction:column;gap:10px;padding:30px 34px;background:{INK2};border-radius:22px;border-left:8px solid {[T2, AMBER][k]}">'
               f'<p style="font-family:{MONO};font-size:24px;letter-spacing:2px;font-weight:600;color:{[T2, AMBER][k]}">{a}</p>' + H(b, 32, CREAM) + P(c, 26, SKY) + "</div>")
@@ -399,8 +399,8 @@ refs(D, "refs", [
 ], size=24)
 
 # 28 ── thanks
-thanks(D, "thanks", "Sorularınızı bekliyorum. Yarın 13:00’te Alıştırma 3’te görüşmek üzere: telefonunuzu ve dizüstü bilgisayarınızı getirmeyi unutmayın.",
-       """Soru-cevap. Zaman kalırsa salona sorun: bugün anlatılan beş adımdan hangisi en zor? Cevaplar yarınki alıştırmalar için iyi bir giriş olur.""")
+thanks(D, "thanks", "Sorularınızı bekliyorum. Bu akşam ilk adım olarak kurumsal hesabınızda çok faktörlü doğrulamayı açın.",
+       """Soru-cevap. Zaman kalırsa salona sorun: bugün anlatılan beş adımdan hangisi en zor? Cevaplar yarınki masa başı tatbikat için iyi bir giriş olur.""")
 
 SECTIONS = {"s1": {"description": "Neden hedefiz?", "start": "cover"}, "s2": {"description": "Vakalar", "start": "k-cases"},
             "s3": {"description": "Saldırının anatomisi", "start": "k-chain"}, "s4": {"description": "Savunma", "start": "k-def"},

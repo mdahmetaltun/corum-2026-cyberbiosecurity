@@ -54,17 +54,17 @@ Benzetmeyle bitirin: biyogüvenlik kabinini kimse açık bırakmaz. Bilgisayarı
 OB = [("01", "Siber biyogüvenliği tanımlar, laboratuvarların neden hedef olduğunu açıklarsınız.", V2),
       ("02", "Kendi laboratuvarınızın varlıklarını ve risklerini haritalarsınız.", T3),
       ("03", "Oltalama ve sosyal mühendislik girişimlerini tanırsınız.", P2),
-      ("04", "Hesabınızda çok faktörlü doğrulamayı ve güvenlik anahtarını kurarsınız.", AMBER),
+      ("04", "Laboratuvarınız için bir politika ve SOP taslağını değerlendirirsiniz.", AMBER),
       ("05", "Bir olayı taslak prosedüre göre bildirir, kayda geçirirsiniz.", V1),
       ("06", "Yapay zekâ araçlarını sorumlu kullanır, veri bütünlüğünü korursunuz.", T2)]
 items = [f'<p style="font-family:{DISPLAY};font-size:46px;font-weight:800;letter-spacing:-1px;color:{ {P2: PT, AMBER: AMBERT, T2: TT}.get(c, c)}">{num}</p>' + P(t, 27, TEXT, lh=1.36) for num, t, c in OB]
 content(D, "goals", "Öğrenme hedefleri", "İki günün sonunda yapabilecekleriniz",
         cards_row(items, top=300, n=3, height=280, row_gap=24, accents=[c for *_, c in OB], pad="28px 32px")
-        + src("Son gün yeterlik kontrolü bu altı hedefi ölçer: son test, oltalama tanıma, yazılı olay senaryosu ve MFA kurulum doğrulaması.", top=900),
+        + src("Son gün yeterlik kontrolü bu altı hedefi ölçer: son test, oltalama tanıma ve yazılı olay senaryosu.", top=900),
         ill="target",
         notes="""Altı öğrenme hedefi. Hepsi bir eylem fiiliyle bitiyor, çünkü yarın öğleden sonra bunları gerçekten ölçeceğiz.
-Bir ve iki bugünün konuları; üç ve dört yarının uygulaması; beş, Dr. Müjdeci'nin masa başı tatbikatı; altı, yapay zekâ ve veri bütünlüğü oturumları.
-Kapanışta son test, oltalama tanıma, yazılı bir olay senaryosu ve MFA kurulum doğrulaması yapacağız.""")
+Bir, iki ve üç bugünün konuları; dört ve beş yarın sabahki politikalar, SOP'ler ve masa başı tatbikat; altı, yapay zekâ ve veri bütünlüğü oturumları.
+Kapanışta son test, oltalama tanıma ve yazılı bir olay senaryosu yapacağız.""")
 
 # 7–8 programme
 DAY1 = [("09:00–09:30", "AÇILIŞ", "Kayıt, hoş geldiniz ve ön test", "Prof. Dr. Ahmet Altun", V2),
@@ -78,12 +78,11 @@ DAY1 = [("09:00–09:30", "AÇILIŞ", "Kayıt, hoş geldiniz ve ön test", "Prof
         ("15:30–16:30", "DERS", "Uluslararası iş birliğinde araştırma güvenliği: İngiltere pratiği", "Doç. Dr. Ahmet Şevki Taşkıran", V2)]
 DAY2 = [("09:00–10:15", "DERS", "Yaşam bilimlerinde yapay zekâ: fırsatlar, riskler ve sorumlu kullanım", "Prof. Dr. Gökçe Merey", V2),
         ("10:15–10:30", None, "Kahve arası", "", None),
-        ("10:30–12:00", "ALIŞTIRMA 2", "Laboratuvar politikaları ve SOP’ler · olay müdahalesi masa başı tatbikatı", "Dr. Öğr. Üyesi Gamze Nur Müjdeci · Prof. Dr. Ahmet Altun", T3),
+        ("10:30–12:00", "ALIŞTIRMA 2", "Laboratuvar politikaları ve SOP’ler · olay müdahalesi masa başı tatbikatı", "Prof. Dr. Gökçe Merey · Prof. Dr. Ahmet Altun", T3),
         ("12:00–13:00", None, "Öğle arası", "", None),
-        ("13:00–14:30", "ALIŞTIRMA 3", "Çok faktörlü doğrulama ve donanım güvenlik anahtarları", "Prof. Dr. Ahmet Altun", AMBER),
-        ("14:30–14:45", None, "Kahve arası", "", None),
-        ("14:45–15:45", "DERS", "Deneysel laboratuvarlarda veri bütünlüğü: ham veriden yayına", "Doç. Dr. Ahmet Şevki Taşkıran", V2),
-        ("15:45–16:30", "DEĞERLENDİRME", "Yeterlik kontrolü, son test ve kapanış", "Prof. Dr. Ahmet Altun", P2)]
+        ("13:00–14:00", "DERS", "Deneysel laboratuvarlarda veri bütünlüğü: ham veriden yayına", "Doç. Dr. Ahmet Şevki Taşkıran", V2),
+        ("14:00–14:15", None, "Kahve arası", "", None),
+        ("14:15–15:00", "DEĞERLENDİRME", "Yeterlik kontrolü, son test ve kapanış", "Prof. Dr. Ahmet Altun", P2)]
 
 
 def programme(rows, top=300):
@@ -107,29 +106,28 @@ def programme(rows, top=300):
 content(D, "day1", "Program · Pazartesi 16 Kasım", "1. Gün: temeller ve laboratuvar riskleri", programme(DAY1, 272),
         notes="""Birinci gün. Sabah iki ders: Prof. Gargılı Keleş ile temeller, Prof. Merey ile laboratuvarlarda bilgi güvenliği. Öğleden sonra ilk alıştırma: kendi laboratuvarınızın varlık haritası.
 Günü iki dersle kapatıyoruz: benim siber hırsızlık oturumum ve Doç. Dr. Taşkıran'ın uluslararası iş birliğinde araştırma güvenliği oturumu.""", title_id="prog-title")
-content(D, "day2", "Program · Salı 17 Kasım", "2. Gün: politika, yapay zekâ ve uygulama", programme(DAY2, 272),
+content(D, "day2", "Program · Salı 17 Kasım", "2. Gün: yapay zekâ, politika ve veri bütünlüğü", programme(DAY2, 272),
         transition="magic",
-        notes="""İkinci gün daha uygulamalı. Sabah yapay zekâ; sonra Dr. Müjdeci ile politikalar, SOP'ler ve bir olay müdahalesi masa başı tatbikatı. Öğleden sonra Alıştırma 3'te herkes kendi hesabında MFA kuracak; en yüksek erişimli beş kullanıcıya donanım anahtarı yapılandırılacak.
-Son oturum yeterlik kontrolü ve kapanış. Sertifika için iki günün tamamına katılım ve son testi tamamlamak gerekiyor.""", title_id="prog-title")
+        notes="""İkinci gün daha kısa; 15:00'te bitiyor. Sabah Prof. Merey ile yapay zekâ; ardından yine Prof. Merey ile politikalar, SOP'ler ve bir olay müdahalesi masa başı tatbikatı. Öğleden sonra Doç. Dr. Taşkıran ile araştırma verisi bütünlüğü.
+14:15'teki son oturum yeterlik kontrolü ve kapanış. Sertifika için iki günün tamamına katılım ve son testi tamamlamak gerekiyor.""", title_id="prog-title")
 
 # 9 speakers
-SP = [("AA", "Prof. Dr. Ahmet Altun", "Sivas Cumhuriyet Üniversitesi · proje yürütücüsü", "Açılış · Siber hırsızlık · Alıştırma 3 · Kapanış", V2),
+SP = [("AA", "Prof. Dr. Ahmet Altun", "Sivas Cumhuriyet Üniversitesi · proje yürütücüsü", "Açılış · Siber hırsızlık · Kapanış", V2),
       ("AG", "Prof. Dr. Ayşen Gargılı Keleş", "Marmara Üniversitesi · Biyogüvenlik ve Biyoemniyet Derneği kurucu başkanı", "Siber biyogüvenliğin temelleri", T3),
-      ("GM", "Prof. Dr. Gökçe Merey", "Çalıştay konuşmacısı · üç oturum", "Laboratuvarda siber riskler · Alıştırma 1 · Yapay zekâ", P2),
-      ("GM", "Dr. Öğr. Üyesi Gamze Nur Müjdeci", "Hitit Üniversitesi", "Politikalar ve SOP’ler · Alıştırma 2", AMBER),
+      ("GM", "Prof. Dr. Gökçe Merey", "Çalıştay konuşmacısı · dört oturum", "Laboratuvarda siber riskler · Alıştırma 1 · Yapay zekâ · Politikalar ve SOP’ler", P2),
       ("AT", "Doç. Dr. Ahmet Şevki Taşkıran", "Sivas Cumhuriyet Üniversitesi", "Araştırma güvenliği · Veri bütünlüğü", V1)]
 items = []
 for ini, nm, af, ses, c in SP:
     items.append(f'<p style="width:96px;height:96px;border-radius:48px;background:{c};color:{"#FFFFFF" if c in (V2, V1, T3) else INK};font-family:{DISPLAY};font-size:36px;font-weight:800;text-align:center;line-height:96px">{ini}</p>'
                  + H(nm, 28) + P(af, 24, MUTE, lh=1.32) + f'<div style="height:2px;background:{LINE}"></div>' + P(ses, 24, TEXT, lh=1.32, weight=500))
-content(D, "speakers", "Konuşmacılar", "Beş konuşmacı, iki gün",
+content(D, "speakers", "Konuşmacılar", "Dört konuşmacı, iki gün",
         cards_row(items, top=300, height=560, pad="30px 26px", gap=20),
-        notes="""Konuşmacılarımız. Prof. Ayşen Gargılı Keleş, Marmara Üniversitesi; Türkiye Biyogüvenlik ve Biyoemniyet Derneği'nin kurucu başkanı. Prof. Gökçe Merey üç oturumda bizimle. Dr. Öğr. Üyesi Gamze Nur Müjdeci, Hitit Üniversitesi; kısa süre önce Çorum'da benzer bir çalıştayı düzenledi. Doç. Dr. Ahmet Şevki Taşkıran, üniversitemizden.
+        notes="""Konuşmacılarımız. Prof. Ayşen Gargılı Keleş, Marmara Üniversitesi; Türkiye Biyogüvenlik ve Biyoemniyet Derneği'nin kurucu başkanı. Prof. Gökçe Merey dört oturumda bizimle: laboratuvarlarda siber riskler, varlık haritalama alıştırması, yapay zekâ ve politikalar ile SOP'ler. Doç. Dr. Ahmet Şevki Taşkıran, üniversitemizden.
 Her konuşmacıya kısa bir alkış isteyin.""")
 
 # 10 how we work
 items = [
-    icon("Laptop", 48, V2) + H("Telefon ve dizüstü", 30) + P("Yarın 13:00’teki MFA alıştırması kendi hesaplarınızda yapılır; ikisini de getirin.", 26, BODY2, lh=1.38),
+    icon("Clock", 48, V2) + H("Saatler", 30) + P("Bugün 09:00–16:30, yarın 09:00–15:00. Aralar programdaki saatlerde.", 26, BODY2, lh=1.38),
     icon("Fingerprint", 48, TT) + H("Katılımcı kodu", 30) + P("Testlerde adınız yerine kendi oluşturduğunuz kod yer alır. Ön ve son test böyle eşleşir.", 26, BODY2, lh=1.38),
     icon("MessageCircleQuestion", 48, PT) + H("Chatham House kuralı", 30) + P("Burada anlatılan kullanılabilir; kimin anlattığı dışarıya taşınmaz.", 26, BODY2, lh=1.38),
     icon("Award", 48, AMBERT) + H("Sertifika", 30) + P("İki günün tamamına katılım, son test ve geri bildirim formu.", 26, BODY2, lh=1.38),
@@ -138,7 +136,7 @@ content(D, "rules", "Çalışma düzeni", "Nasıl çalışacağız?",
         cards_row(items, top=320, height=420, pad="32px 32px")
         + callout(780, "Kendi laboratuvarınızdan örnek verin; ama parola, IP adresi ya da cihaz seri numarası paylaşmayın.", label="Tek kural", icon="ShieldAlert", build="rise 5 auto"),
         ill="checklist",
-        notes="""Dört pratik bilgi. Telefon ve dizüstü yarın gerekli. Katılımcı kodu: testlerde isim yok, birazdan nasıl oluşturacağınızı göstereceğim. Chatham House kuralı: söylenenler kullanılabilir, kim söylediği paylaşılmaz; bu, kendi laboratuvarınızdaki sorunları rahatça konuşabilmeniz için.
+        notes="""Dört pratik bilgi. Saatler: bugün 16:30'a, yarın 15:00'e kadar. Katılımcı kodu: testlerde isim yok, birazdan nasıl oluşturacağınızı göstereceğim. Chatham House kuralı: söylenenler kullanılabilir, kim söylediği paylaşılmaz; bu, kendi laboratuvarınızdaki sorunları rahatça konuşabilmeniz için.
 Sertifika: iki günün tamamına katılım, son test ve geri bildirim formu.
 Tek kural: örnek verin ama parola, IP adresi ya da seri numarası paylaşmayın.""")
 
