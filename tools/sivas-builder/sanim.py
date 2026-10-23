@@ -7,6 +7,11 @@ import json, os, sys
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "slides-builder"))
 from anim import HEAD, BOOT, TAIL, JS as _JS  # noqa: E402
 
+# Robust sizing: the presenter (full screen, thumbnails, preloaded hidden slides) can resize the iframe without a
+# usable resize event, or start it at 0×0. Re-fit on every frame when the canvas size changes and tell listeners.
+BOOT = BOOT.replace("function s(n){f(", "function s(n){if(C.clientWidth!==W||C.clientHeight!==H){fit();dispatchEvent(new Event('resize'))}f(")
+assert "dispatchEvent" in BOOT
+
 JS = dict(_JS)
 JS["counter"] = JS["counter"].replace("toLocaleString('en-US'", "toLocaleString(P.loc||'tr-TR'").replace('const to=P.to', 'const to=P.to,_w=P.weight||800').replace("`600 ${P.size}px ${f}`", "`${_w} ${P.size}px ${f}`").replace('P.font||"Georgia, \'Times New Roman\', serif"', 'P.font||"__FONT__"')
 FONT = "'Segoe UI', 'Helvetica Neue', Arial, sans-serif"
@@ -34,12 +39,12 @@ if(P.rings){for(let r=0;r<2;r++){const u=(t*.35+r/2)%1;X.strokeStyle=hx(P.b,.4*(
 
 # particle typography morph: words are sampled into dot clouds; dots fly from word to word
 JS["morph"] = """const WS=P.words,N=P.n||1600,FN=P.font||"__FONT__",per=P.per||3.2,tr=P.tr||1.15;const O=document.createElement('canvas'),OC=O.getContext('2d');let T=[],px=new Float32Array(N),py=new Float32Array(N),sx=new Float32Array(N),sy=new Float32Array(N),R0=2;
-function samp(){if(!W||!H)return;O.width=W;O.height=H;T=WS.map(w=>{OC.clearRect(0,0,W,H);let sz=P.size;OC.font=`${P.weight||800} ${sz}px ${FN}`;const m=OC.measureText(w[0]).width;if(m>W*.95){sz=sz*W*.95/m;OC.font=`${P.weight||800} ${sz}px ${FN}`}
+let SW=0,SH=0;function samp(){if(!W||!H)return;SW=W;SH=H;try{O.width=W;O.height=H;T=WS.map(w=>{OC.clearRect(0,0,W,H);let sz=P.size;OC.font=`${P.weight||800} ${sz}px ${FN}`;const m=OC.measureText(w[0]).width;if(m>W*.95){sz=sz*W*.95/m;OC.font=`${P.weight||800} ${sz}px ${FN}`}
 OC.fillStyle='#fff';OC.textAlign=P.align=='left'?'left':'center';OC.textBaseline='middle';OC.fillText(w[0],P.align=='left'?4:W/2,H/2);const d=OC.getImageData(0,0,W,H).data,st=Math.max(2,Math.round(sz/34)),pts=[];R0=st*.42;
-for(let y=0;y<H;y+=st)for(let x=0;x<W;x+=st)if(d[(y*W+x)*4+3]>140)pts.push([x,y]);for(let i=pts.length-1;i>0;i--){const j=(i*7919)%(i+1);[pts[i],pts[j]]=[pts[j],pts[i]]}return pts});
+for(let y=0;y<H;y+=st)for(let x=0;x<W;x+=st)if(d[(y*W+x)*4+3]>140)pts.push([x,y]);for(let i=pts.length-1;i>0;i--){const j=(i*7919)%(i+1);[pts[i],pts[j]]=[pts[j],pts[i]]}return pts})}catch(e){T=[]}
 for(let i=0;i<N;i++){sx[i]=Math.random()*W;sy[i]=Math.random()*H}}samp();addEventListener('resize',samp);
 const ez=u=>u<.5?4*u*u*u:1-Math.pow(-2*u+2,3)/2;
-loop(t=>{X.clearRect(0,0,W,H);if(!T.length||!T[0].length)return;const n=WS.length,tt=t+per-tr,k=Math.floor(tt/per)%n,pk=(k+n-1)%n,u=Math.min(1,(tt%per)/tr),e=ez(u),first=t<tr;
+loop(t=>{X.clearRect(0,0,W,H);if(W&&H&&(W!==SW||H!==SH||!T.length||!T[0].length))samp();if(!T.length||!T[0].length){if(!W||!H)return;const n=WS.length,tq=Math.max(0,t),k=Math.floor(tq/per)%n,u=(tq%per)/per,w=WS[k];let sz=P.size;X.font=`${P.weight||800} ${sz}px ${FN}`;const m=X.measureText(w[0]).width;if(m>W*.95){sz=sz*W*.95/m;X.font=`${P.weight||800} ${sz}px ${FN}`}X.globalAlpha=Math.min(1,u*6,(1-u)*6);X.fillStyle=w[1]||P.fg;X.textAlign='center';X.textBaseline='middle';X.fillText(w[0],W/2,H/2);X.globalAlpha=1;return}const n=WS.length,tt=t+per-tr,k=Math.floor(tt/per)%n,pk=(k+n-1)%n,u=Math.min(1,(tt%per)/tr),e=ez(u),first=t<tr;
 const A=T[pk],B=T[k],ca=WS[pk][1]||P.fg,cb=WS[k][1]||P.fg;X.fillStyle=u<1?cb:cb;
 for(let i=0;i<N;i++){const a=first?[sx[i],sy[i]]:A[i%A.length],b=B[i%B.length],sw=Math.sin(u*Math.PI)*(30+40*((i*13)%7)/7),an=i*2.4;
 const x=a[0]+(b[0]-a[0])*e+Math.cos(an)*sw,y=a[1]+(b[1]-a[1])*e+Math.sin(an)*sw;X.globalAlpha=i<B.length||u<1?1:0;X.fillStyle=(i%17==0)?(P.d||cb):(u<.5?ca:cb);X.fillRect(x-R0,y-R0,R0*2,R0*2)}X.globalAlpha=1});""".replace("__FONT__", FONT)
