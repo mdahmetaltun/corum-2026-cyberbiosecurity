@@ -7,7 +7,17 @@ X.lineWidth=1.2;for(const[i,j]of L){const z=(Q[i][2]+Q[j][2])/2;X.strokeStyle=hx
 Q.forEach((q,i)=>{const k=(q[2]+1)/2;X.fillStyle=hx(i%11==0?P.c:P.fg,.2+.75*k);X.beginPath();X.arc(q[0],q[1],1.4+2.6*k,0,7);X.fill()});
 for(let k=0;k<(L.length?5:0);k++){const e=L[(k*37)%L.length],u=(t*.6+k*.2)%1,p=Q[e[0]],q=Q[e[1]];X.fillStyle=P.d;X.beginPath();X.arc(p[0]+(q[0]-p[0])*u,p[1]+(q[1]-p[1])*u,4,0,7);X.fill()}
 X.strokeStyle=hx(P.b,.35);X.lineWidth=2;X.beginPath();X.ellipse(cx,cy,R*1.12,R*.32,-.3,0,7);X.stroke()});</script></body></html></x-embed><p data-build-in="fade 1 auto" style="position:absolute;left:128px;top:266px;width:1400px;font-size:24px;letter-spacing:2px;text-transform:uppercase;font-weight:600;color:#19D3F0">YZ riski neden farklı · NIST AI 100-1, Ek B</p><h2 data-build-in="rise 2 auto" style="position:absolute;left:128px;top:326px;width:1560px;font-family:'Source Serif 4', Georgia, serif;font-size:80px;font-weight:600;line-height:1.08;color:#F7F3FF">Veri değişir; modeller kayar.</h2><h2 data-build-in="rise 3 auto" style="position:absolute;left:128px;top:416px;width:1560px;font-family:'Source Serif 4', Georgia, serif;font-size:80px;font-weight:600;line-height:1.08;color:#F7F3FF">Davranış yazılmaz, öğrenilir.</h2><h2 data-build-in="rise 4 auto" style="position:absolute;left:128px;top:505px;width:1560px;font-family:'Source Serif 4', Georgia, serif;font-size:80px;font-weight:600;line-height:1.08;color:#F7F3FF">Hataları öngörmek zordur.</h2><h2 data-build-in="rise 5 auto" style="position:absolute;left:128px;top:595px;width:1560px;font-family:'Source Serif 4', Georgia, serif;font-size:80px;font-weight:600;line-height:1.08;color:#F7F3FF">Hatalar anında çoğalır.</h2><h2 data-build-in="rise 6 auto" style="position:absolute;left:128px;top:684px;width:1560px;font-family:'Source Serif 4', Georgia, serif;font-size:80px;font-weight:600;line-height:1.08;color:#19D3F0">Aynı araç iki yönde de kullanılabilir.</h2><p style="position:absolute;left:128px;bottom:64px;width:1300px;font-size:24px;color:#C4B8EC">NIST AI RMF · Araştırma Laboratuvarları · Çorum 2026</p><p style="position:absolute;right:128px;bottom:64px;width:120px;font-size:24px;color:#C4B8EC;text-align:right">6</p>
-<aside>Beş satır, her biri tek tek; NIST’in YZ risklerinin geleneksel yazılımdan nasıl ayrıldığını anlatan ekini özetliyor.
+<aside>Peki yapay zekâ riski neden ayrı bir çerçeve gerektiriyor? Dün konuştuğumuz CSF yetmez mi? NIST bu soruyu AI RMF’nin B ekinde cevaplıyor. Ben beş cümleyle özetleyeceğim.
 
-Geleneksel yazılım kodunun söylediğini yapar. Eğitilmiş bir model ise verisinin ona öğrettiğini yapar ve o veri zamanla değişebilir. Bu yüzden devreye alındıktan sonra da ölçmeyi sürdüren bir çerçeveye ihtiyacımız var.</aside>
+▸ Bir: Veri değişir; modeller kayar. Model eğitildiği verinin dünyasında yaşar; dünya değiştikçe performansı sessizce düşebilir.
+
+▸ İki: Davranış yazılmaz, öğrenilir. Klasik bir yazılım kodunun söylediğini yapar. Eğitilmiş bir model ise verisinin ona öğrettiğini yapar.
+
+▸ Üç: Hataları öngörmek zordur. Bir modelin hangi girdide yanılacağını önceden bilmek çoğu zaman mümkün değildir.
+
+▸ Dört: Hatalar anında çoğalır. Bir insan bir hatayı bir kez yapar; bir model aynı hatayı bin görüntüde aynı anda yapar.
+
+▸ Beş: Aynı araç iki yönde de kullanılabilir. Biraz önce MegaSyn’de gördüğümüz tam olarak buydu.
+
+Bu beş özelliğin ortak sonucu şu: Yapay zekâ sistemini bir kez test edip rafa kaldıramayız. Devreye aldıktan sonra da ölçmeyi sürdüren bir çerçeveye ihtiyacımız var. AI RMF tam olarak bunu sağlıyor.</aside>
 </section>
