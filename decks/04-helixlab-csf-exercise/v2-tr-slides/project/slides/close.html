@@ -6,5 +6,13 @@ for(const p of pts){X.strokeStyle=hx(P.fg,.25+.25*Math.abs(p[2]));X.lineWidth=3;
 const ball=(x,y,z,c)=>{const r=(P.r||5)+4*(z+1);X.fillStyle=hx(c,.45+.55*(z+1)/2);X.beginPath();X.arc(x,y,r,0,7);X.fill()};
 const order=[];pts.forEach((p,i)=>{order.push([p[2],()=>ball(p[0],p[1],p[2],i%4==0?P.c:P.a)]);order.push([p[4],()=>ball(p[0],p[3],p[4],i%3==0?P.d:P.b)])});
 order.sort((u,v)=>u[0]-v[0]).forEach(o=>o[1]())});</script></body></html></x-embed><h2 data-build-in="rise 1 auto" style="position:absolute;left:128px;top:330px;width:1250px;font-family:'Source Serif 4', Georgia, serif;font-size:100px;font-weight:600;line-height:1.08;color:#F3FAF0">Profiliniz bir taslak.</h2><h2 data-build-in="rise 2 auto" style="position:absolute;left:128px;top:460px;width:1250px;font-family:'Source Serif 4', Georgia, serif;font-size:100px;font-weight:600;line-height:1.08;color:#A3E635">Laboratuvarınız gerçek.</h2><p data-build-in="fade 3 auto" style="position:absolute;left:128px;top:720px;width:640px;font-size:26px;font-weight:600;color:#F3FAF0;background:#164A3A;padding:16px 24px;border-radius:14px">15:30 · Grup sunumları ve tartışma</p><p data-build-in="fade 3 auto" style="position:absolute;left:808px;top:720px;width:560px;font-size:26px;font-weight:600;color:#0D3328;background:#A3E635;padding:16px 24px;border-radius:14px">Kapanış · değerlendirme · sertifikalar</p><p style="position:absolute;left:128px;bottom:64px;width:1300px;font-size:24px;color:#A7C9B8">Uygulama · NIST CSF 2.0’ın Bir Biyoteknoloji Laboratuvarına Uygulanması · Çorum 2026</p><p style="position:absolute;right:128px;bottom:64px;width:120px;font-size:24px;color:#A7C9B8;text-align:right">16</p>
-<aside>Alıştırmayı kapatın. Her katılımcıyı, envanterden başlayarak bir ay içinde profili kendi laboratuvarı için tekrarlamaya teşvik edin. Ardından grup sunumlarına geçin.</aside>
+<aside>Kapanıştan önce son bir söz.
+
+▸ Bugün oluşturduğunuz profil bir taslak.
+
+▸ Ama laboratuvarınız gerçek.
+
+Sizden bir ricam var: Bu profili bir ay içinde kendi laboratuvarınız için tekrarlayın. Ve envanterden başlayın. Dondurucu kontrolcüsünden USB belleğe kadar, neye sahip olduğunuzu yazın. Gerisi oradan gelecek.
+
+▸ Şimdi saat 15:30’daki grup sunumlarına ve tartışmaya geçiyoruz. ▸ Ardından kapanış, değerlendirme ve sertifika töreni ile çalıştayımızı tamamlayacağız.</aside>
 </section>
