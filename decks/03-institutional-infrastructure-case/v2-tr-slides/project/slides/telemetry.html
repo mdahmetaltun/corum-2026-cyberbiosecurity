@@ -10,7 +10,21 @@ for(const b of B){let d=(a-b[0]+6.283)%6.283,al=Math.max(0,1-d/3);X.fillStyle=hx
 loop(t=>{X.clearRect(0,0,W,H);X.fillStyle=hx(P.bg||'#000000',.94);X.fillRect(0,0,W,H);X.font="24px Menlo, Consolas, 'Courier New', monospace";X.textBaseline='top';
 const cyc=Lw.length*1.6+2,tt=t%cyc;let shown=0;Lw.forEach((l,i)=>{const st=i*1.6;if(tt<st)return;const n=Math.min(l[0].length,Math.floor((tt-st)*38));X.fillStyle=l[1]||P.fg;X.fillText(l[0].slice(0,n),20,18+i*36);shown=i});
 if(Math.floor(t*2)%2==0){X.fillStyle=P.d;X.fillRect(20,18+(shown+1)*36,14,26)}});</script></body></html></x-embed>
-<aside>Altı kayıt kaynağı, üç kural. Dondurucu alarmı bilerek turuncu: hem güvenlik hem biyogüvenlik sinyalidir.
+<aside>HSE vakasına geri dönelim: Sinyaller oradaydı ama kimse görmedi. Göremediğinizle savaşamazsınız. Bu, CSF’de DE.CM, sürekli izleme.
 
-Saklama maddesi açılış vakasına bağlanır: iki haftalık kayıt tutuyorsanız sekiz haftalık bir sızma görünmez kalır.</aside>
+Bir merkez laboratuvar için altı kayıt kaynağı öneriyorum.
+
+▸ Güvenlik duvarı. ▸ Kimlik ve dizin hizmeti, yani kim ne zaman oturum açtı. ▸ Atlama sunucusu oturumları. ▸ Cihaz bilgisayarlarındaki olaylar. ▸ LIMS denetim izi. ▸ Ve dondurucu ile oda alarmları.
+
+Bu sonuncuyu bilerek turuncuya boyadık. Çünkü dondurucu alarmı hem bir güvenlik sinyali hem de bir biyogüvenlik sinyalidir.
+
+Ve üç kural:
+
+▸ Bir: Her saati eşzamanlayın. NTP olmadan, farklı cihazlardan gelen kayıtlarla bir olayın zaman çizelgesini yeniden kuramazsınız.
+
+▸ İki: Kayıtları merkezde toplayın. Çünkü ele geçirilen bir makinedeki kayıtlar, saldırganın ilk sildiği şeydir.
+
+▸ Üç: Saklama süresine önceden karar verin. HSE saldırganı sekiz hafta içerideydi. İki haftalık kayıt tutuyorsanız, sekiz haftalık bir sızma sizin için görünmezdir. En az o kadar saklayın.
+
+Sağdaki terminal, böyle bir sistemin sabah saat dörtte nasıl göründüğünü canlandırıyor: Saatler eşzamanlı, tedarikçi girişi çok faktörlü doğrulamayla yapılmış ve üçüncü dondurucu bir alarm veriyor.</aside>
 </section>

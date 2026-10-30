@@ -9,5 +9,12 @@ WS.forEach((w,i)=>{const st=.25+i*P.gap,u=Math.max(0,Math.min(1,(t-st)/.45)),e=1
 X.save();const yy=y+i*SZ*P.lh;X.translate(P.align=='center'?W/2:0,yy);const sc=2.2-1.2*e;X.scale(sc,sc);X.globalAlpha=Math.min(1,u*2);
 X.font=`${P.weight||900} ${SZ}px ${f}`;X.textAlign=P.align||'left';X.fillStyle=w[1]||P.fg;if(u<1){X.filter=`blur(${(1-e)*8}px)`}X.fillText(w[0],0,0);X.restore();
 const sw=((t-st-1)%4)/1.2;if(t>st+1&&sw>=0&&sw<=1){X.save();X.globalCompositeOperation='source-atop';const tw=W,gx=sw*tw*1.4-tw*.2;const g=X.createLinearGradient(gx-120,0,gx+120,0);g.addColorStop(0,'rgba(255,255,255,0)');g.addColorStop(.5,'rgba(255,255,255,.55)');g.addColorStop(1,'rgba(255,255,255,0)');X.fillStyle=g;X.fillRect(0,yy-SZ*.6,W,SZ*1.2);X.restore()}})});</script></body></html></x-embed><p style="position:absolute;left:128px;bottom:64px;width:1300px;font-size:24px;color:#A9C6C8">Kurumsal Siber Güvenlik Altyapısı · Vaka Çalışması · Çorum 2026</p><p style="position:absolute;right:128px;bottom:64px;width:120px;font-size:24px;color:#A9C6C8;text-align:right">13</p>
-<aside>2. Aşamaya kinetik geçiş. Değerlendirme bitti; şimdi kur, eğit ve prova et.</aside>
+<aside>[Kelimeler tek tek ekrana gelir; her birini görünce okuyun.]
+
+Birinci aşama bitti. Değerlendirdik.
+
+Şimdi ikinci aşama:
+Kur.
+Eğit.
+Ve prova et.</aside>
 </section>

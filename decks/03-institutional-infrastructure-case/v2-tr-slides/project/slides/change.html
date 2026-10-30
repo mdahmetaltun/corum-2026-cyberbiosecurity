@@ -10,7 +10,15 @@ let s=v.toLocaleString('tr-TR',{minimumFractionDigits:dec,maximumFractionDigits:
 X.font=`600 ${P.size}px ${f}`;X.textBaseline='middle';X.textAlign=P.align||'left';const x=P.align=='center'?W/2:0;
 X.shadowColor=hx(P.d,.35+.25*Math.sin(t*2));X.shadowBlur=u<1?0:18;X.fillStyle=P.fg;X.fillText(s,x,H/2);
 if(u<1){X.fillStyle=hx(P.d,.9);X.fillRect(0,H-6,W*e,6)}});</script></body></html></x-embed><p data-build-in="fade 3 auto" style="position:absolute;left:840px;top:390px;width:600px;font-size:44px;font-weight:600;color:#FFC233">milyon kişi</p><p data-build-in="rise 4 auto" style="position:absolute;left:128px;top:510px;width:1500px;font-size:38px;line-height:1.38;color:#A9C6C8">Saldırganlar bir uzaktan erişim portalından girdi; portal <b style="color:#F2F7F6">çok faktörlü doğrulama istemiyordu</b>.</p><div data-build-in="rise 5 auto" style="position:absolute;left:128px;top:690px;width:1664px;display:flex;flex-direction:row;gap:30px;align-items:center;background:#FFC233;padding:28px 40px;border-radius:20px"><p style="font-size:24px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#0B2530">Kural</p><p style="font-family:'Source Serif 4', Georgia, serif;font-size:44px;font-weight:600;color:#0B2530">Her uzak erişim yolunda MFA; önce tedarikçi yollarında.</p></div><p style="position:absolute;left:128px;top:880px;width:1500px;font-size:24px;color:#A9C6C8">ABD HHS Sivil Haklar Ofisi’ne Temmuz 2025’te bildirilen rakam</p><p style="position:absolute;left:128px;bottom:64px;width:1300px;font-size:24px;color:#A9C6C8">Kurumsal Siber Güvenlik Altyapısı · Vaka Çalışması · Çorum 2026</p><p style="position:absolute;right:128px;bottom:64px;width:120px;font-size:24px;color:#A9C6C8;text-align:right">15</p>
-<aside>ABD’de kayıtlara geçmiş en büyük sağlık verisi ihlali: MFA’sız tek bir portaldan 192,7 milyon kişi.
+<aside>Atlama sunucusunda çok faktörlü doğrulamada neden bu kadar ısrar ettiğimi bir vakayla göstereyim.
 
-Bu, PR.AA’nın uygulamadaki hâlidir. Bizim birimimiz için tedarikçi atlama sunucusu ve her VPN ya da uzak masaüstü yolu anlamına gelir.</aside>
+Change Healthcare, Şubat 2024. ABD’de sağlık sektörünün ödeme ve veri altyapısını işleten bir şirket.
+
+[Sayaç yükselir.]
+
+▸ 192,7 milyon kişi. Bu, ABD Sağlık Bakanlığı’nın Sivil Haklar Ofisi’ne Temmuz 2025’te bildirilen rakam. ABD’de kayıtlara geçmiş en büyük sağlık verisi ihlali.
+
+▸ Peki saldırganlar nasıl girdi? Bir uzaktan erişim portalından. ▸ Ve o portal çok faktörlü doğrulama istemiyordu. Yalnızca bir kullanıcı adı ve şifre.
+
+▸ Buradan çıkan kural çok net: Her uzak erişim yolunda çok faktörlü doğrulama. Ve önceliği tedarikçi yollarına verin. Bizim birimimiz için bu; atlama sunucusu, her VPN bağlantısı ve her uzak masaüstü yolu demek. CSF’deki karşılığı PR.AA: kimlik, doğrulama ve erişim.</aside>
 </section>
