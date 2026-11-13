@@ -41,65 +41,69 @@ def timed(sid, eyebrow_, title, facts, minutes, notes, glow=(T3, V2), title_size
 # 1 cover
 cover(D, "cover", "1. Gün · Pazartesi 16 Kasım 2026 · 13:00–14:30",
       [("Alıştırma 1", None), ("Varlık haritası", T2), ("ve riskler", None)],
-      "Küçük gruplarla: laboratuvarın varlıklarını haritalayın, riskleri yazın, ilk üçünü seçin.",
+      "Önce birlikte bir örnek çözüyoruz; sonra iki ekip kendi laboratuvarını haritalıyor.",
       emb("capsid", 1180, 190, 640, 640, PAL, rings=True, intro=True, spin=.35, t1=T1, v1=V1, v3=V3),
-      """Öğle arasından dönüş. Katılımcılar salona girerken masalara yönlendirin: her masada dört ile altı kişi, aynı birimden gelenler farklı masalarda.
-Bu oturumda ders yok; doksan dakikanın yetmiş beşi masalarda geçecek. Sunum yalnız yönergeleri ve sayaçları taşır.
-Masalarda hazır olması gerekenler: senaryo kartları, dört form, beş renk yapışkan not, kalın kalemler ve bir pano kâğıdı.""", size=96)
+      """Öğle arasından dönüş. Oturum üç parça: on dakikalık giriş, kurgusal bir laboratuvar üzerinde birlikte çözeceğimiz bir örnek ve ardından iki ekibin kendi laboratuvarını haritalaması.
+Salonda iki tahta ya da iki pano hazır olsun: biri CÜTAM, biri CÜTFAM ekibi için. Her tahtanın yanında kalın kalemler ve beş renk yapışkan not bulunsun.""", size=96)
 
 # 2 kinetic
 kinetic(D, "k-list", "Alıştırmanın tek cümlesi", [("LİSTEDE", None), ("YOKSA", None), ("KORUNMUYOR.", T2)],
         """Kinetik açılış. Bugünün tek cümlesi: listede olmayan varlık korunmuyor. Sabah Prof. Merey'in anlattığı risklerin hepsi bir varlığın üzerinde gerçekleşir; önce o varlıkları görmemiz gerekiyor.""",
         size=160)
 
-# 3 outputs
-OUT = [("01", "Varlık haritası", "Cihazlar, veriler, hesaplar, insanlar ve bağlantılar; her birinin bir sahibi.", V2),
-       ("02", "Risk kaydı", "Her önemli varlık için “ne ters gidebilir?” sorusunun yazılı cevabı.", P2),
-       ("03", "İlk üç risk", "Puanlanmış, sıralanmış ve her biri için bir ilk adım yazılmış.", AMBER)]
+# 3 what is an asset map
+OUT = [("01", "Ne?", "Laboratuvarın çalışması için gereken her şeyin listesi: cihazlar, veriler, hesaplar, insanlar ve bağlantılar.", V2),
+       ("02", "Neden?", "Risk değerlendirmesi buradan başlar. Neyimiz olduğunu bilmeden neyin tehlikede olduğunu söyleyemeyiz.", P2),
+       ("03", "Çıktı", "Her satırında bir sahip olan bir liste, bir veri akışı ve işaretlenmiş en kritik üç varlık.", AMBER)]
 items = [numcard(a, t, d_, TX.get(c, c)) for a, t, d_, c in OUT]
-content(D, "outputs", "Hedef", "90 dakikada üç çıktı",
+content(D, "outputs", "Giriş", "Varlık haritası nedir?",
         cards_row(items, top=320, height=380, accents=[c for *_, c in OUT], pad="32px 32px")
-        + callout(740, "Gerçek kurum adı kullanmıyoruz. Bütün masalar aynı kurgusal laboratuvarı, HALMER’i çalışıyor.", label="Kural", icon="Trust", build="rise 5 auto"),
+        + callout(740, "Varlık yalnız cihaz değildir. Bugün en çok unutulan üç şey veri, hesap ve insan olacak.", label="Dikkat", icon="Lightbulb", build="rise 5 auto"),
         ill="checklist",
-        notes="""Doksan dakikanın sonunda her masanın elinde üç şey olacak: bir varlık haritası, bir risk kaydı ve puanlanmış ilk üç risk ile ilk adımları.
-Kural: gerçek kurum adı yok. Herkes aynı kurgusal laboratuvarı çalışıyor; böylece kimse kendi biriminin açığını salonda anlatmak zorunda kalmıyor. Kendi laboratuvarınıza son beş dakikada döneceğiz.""")
+        notes="""Varlık haritası, laboratuvarın çalışması için gereken her şeyin listesidir. Yalnız cihaz envanteri değildir; veriyi, hesapları, insanları ve bağlantıları da içerir.
+Neden yapıyoruz: risk değerlendirmesinin ilk adımı budur. NIST Siber Güvenlik Çerçevesi'nde Tanımla işlevi tam olarak bununla başlar.
+Bugünün çıktısı: her satırında bir sahip olan bir liste, bir veri akışı ve işaretlenmiş en kritik üç varlık.""")
 
 # 4 flow
-FL = [("10 dk", "Kurulum", "Roller ve senaryo", V1), ("25 dk", "Tur 1 · Harita", "Varlıklar ve veri akışı", V2), ("20 dk", "Tur 2 · Riskler", "Ne ters gidebilir?", P2),
-      ("15 dk", "Tur 3 · Öncelik", "Puanla, ilk üçü seç", AMBER), ("15 dk", "Paylaşım", "Masa başına 2 dakika", T3), ("5 dk", "Kapanış", "Kendi laboratuvarınız", T2)]
-mins = [10, 25, 20, 15, 15, 5]
+FL = [("10 dk", "Giriş", "Varlık haritası nedir?", V1), ("10 dk", "Örnek laboratuvar", "HALMER’i tanıyalım", V2), ("15 dk", "Örnek çözüm", "Haritalama nasıl yapılır?", P2),
+      ("30 dk", "Ekip çalışması", "Kendi laboratuvarınız, tahtada", AMBER), ("20 dk", "Sunum", "Sözcüler anlatıyor", T3), ("5 dk", "Kapanış", "Sonraki adım", T2)]
+mins = [10, 10, 15, 30, 20, 5]
 bar = "".join(f'<div style="width:{round(1664 * m / 90) - 4}px;height:22px;border-radius:11px;background:{c}"></div>' for m, (*_, c) in zip(mins, FL))
 body = f'<div data-build-in="fade 1 auto" style="position:absolute;left:128px;top:300px;width:1664px;height:22px;display:flex;flex-direction:row;gap:4px">{bar}</div>'
 items = [f'<p style="font-family:{DISPLAY};font-size:44px;font-weight:800;letter-spacing:-1px;line-height:1;color:{TX.get(c, c)}">{m}</p>' + H(t, 27, lh=1.2) + P(d_, 24, BODY2, lh=1.32)
          for m, t, d_, c in FL]
 body += cards_row(items, top=360, n=6, gap=20, height=300, accents=[c for *_, c in FL], pad="26px 24px", build_start=2)
-body += callout(720, "Her turda perdede bir sayaç döner. Süre dolunca kalemler bırakılır; yarım kalan satır yarım kalır.", label="Zaman", icon="Clock", build="rise 9 auto")
+body += callout(720, "İlk 35 dakika birlikte, sonraki 50 dakika sizde: iki ekip, iki tahta, iki sözcü.", label="Düzen", icon="Users", build="rise 9 auto")
 content(D, "flow", "Akış", "Altı adım, doksan dakika", body, ill="timeline",
-        notes="""Akış altı adım. On dakika kurulum, yirmi beş dakika varlık haritası, yirmi dakika riskler, on beş dakika önceliklendirme, on beş dakika paylaşım ve beş dakika kapanış.
-Üstteki şerit sürelerin oranını gösteriyor: en uzun dilim haritaya ayrılmış, çünkü iyi bir harita olmadan risk yazılamaz.
-Sayaç kuralını şimdi söyleyin: süre dolunca kalemler bırakılır.""")
+        notes="""Akış. İlk otuz beş dakika birlikte: giriş, kurgusal laboratuvarın tanıtımı ve o laboratuvar üzerinde örnek bir çözüm. Sonraki elli dakika ekiplerde: otuz dakika tahtada çalışma, yirmi dakika sözcülerin sunumu. Son beş dakika kapanış.
+En uzun dilim ekip çalışmasına ayrılmış; örnek çözümü uzatmayın.""")
 
-# 5 roles
-RL = [("Chat", "Moderatör", "Herkesin söz almasını sağlar; tartışma uzayınca kararı bağlar.", V2),
-      ("Book", "Yazıcı", "Formları doldurur, yapışkan notları haritaya yerleştirir.", T3),
-      ("Clock", "Zaman tutucu", "Sayacı izler; turun yarısında ve son üç dakikada uyarır.", AMBER),
-      ("PaperPlane", "Sözcü", "Paylaşımda masanın bulgusunu iki dakikada anlatır.", P2)]
-items = [icon(ic, 48, TX.get(c, c)) + H(t, 32) + P(d_, 26, BODY2, lh=1.38) for ic, t, d_, c in RL]
-content(D, "roles", "Kurulum · 10 dakika", "Her masada dört rol",
-        cards_row(items, top=320, height=360, accents=[c for *_, c in RL], pad="32px 32px")
-        + callout(720, "4–6 kişilik masalar. Rolleri şimdi dağıtın; beşinci ve altıncı kişi “bunu kim kötüye kullanır?” diye soran kişidir.", label="Şimdi", icon="Users", build="rise 5 auto"),
-        ill="people",
-        notes="""Kurulum. Her masa dört rol dağıtsın: moderatör, yazıcı, zaman tutucu ve sözcü. Rolleri bir dakikada seçsinler; gönüllü çıkmazsa doğum günü en yakın olan moderatör olur.
-Beş ya da altı kişilik masalarda kalan üyeler şeytanın avukatıdır: her varlık için "bunu kim, nasıl kötüye kullanır" diye sorar.
-Roller dağılınca senaryo kartlarını açtırın.""")
+# 5 morph: categories
+morph(D, "k-cats", "Beş kategori", [("CİHAZ", T2), ("VERİ", P2), ("HESAP", AMBER), ("İNSAN", None), ("AĞ", T1), ("HARİTA", T2)],
+      """Morf ara slaytı: cihaz, veri, hesap, insan, ağ ve hepsi bir arada harita.""",
+      size=230, sub="Beş kategori, tek harita.", per=2.6)
+
+# 6 categories
+CT = [("Settings", "Cihaz", "Analiz cihazları, cihaz bilgisayarları, dondurucular, depolama cihazları, USB bellekler.", V2),
+      ("Database", "Veri", "Ham veri, raporlar, numune kayıtları, yöntem dosyaları, hasta kayıtları, sözleşmeler.", P2),
+      ("Key", "Yazılım ve hesap", "Cihaz yazılımları, ortak hesaplar, e-posta, bulut hesapları, uzaktan erişim araçları.", AMBER),
+      ("Users", "İnsan ve dış taraf", "Personel, öğrenciler, müşteriler, servis firmaları, temizlik firması, bilgi işlem.", T3),
+      ("Globe", "Ağ ve alan", "Yerel ağ, misafir Wi-Fi, ortak sürücü, kapılar, cihaz odaları, dolaplar.", V1)]
+items = [icon(ic, 46, TX.get(c, c)) + H(t, 29, lh=1.18) + P(d_, 24, BODY2, lh=1.36) for ic, t, d_, c in CT]
+content(D, "cats", "Giriş", "Beş kategoride varlıklar",
+        cards_row(items, top=320, n=5, gap=20, height=380, accents=[c for *_, c in CT], pad="28px 26px")
+        + callout(740, "Bir şey kaybolduğunda, bozulduğunda ya da başkasının eline geçtiğinde işiniz aksıyorsa o bir varlıktır.", label="Ölçüt", icon="Search", build="rise 6 auto"),
+        ill="network",
+        notes="""Beş kategori. Cihazlar; veriler; yazılım ve hesaplar; insanlar ve dış taraflar; ağ ve fiziksel alan.
+Varlık ölçütü basit: kaybolduğunda, bozulduğunda ya da başkasının eline geçtiğinde işiniz aksıyorsa o bir varlıktır. Bir parola da, bir servis firması da, bir Excel dosyası da bu ölçüte girer.""")
 
 
-# 6 scenario lab
-@dark("lab", """Senaryo. HALMER, Halys Üniversitesi Merkezi Araştırma Laboratuvarı; tamamen kurgusal. Halys, Kızılırmak'ın antik adı.
+# 7 scenario lab
+@dark("lab", """Örnek laboratuvar. HALMER, Halys Üniversitesi Merkezi Araştırma Laboratuvarı; tamamen kurgusal. Halys, Kızılırmak'ın antik adı.
 On dört personel, dokuz lisansüstü öğrenci, beş birim. Yılda yaklaşık dört bin iki yüz numune; üçte biri dış müşterilerden. Raporlar e-postayla gidiyor, iki servis firması cihazlara uzaktan bağlanıyor ve son altı ayda üç olay yaşanmış.
-Ayrıntıların hepsi masadaki kartta. Kartı okumaları için dört dakika verin; okurken varlıkların altını çizsinler. Kartta yirmi bulgu gizli; bunu söylemeyin.""", glow=(V2, P2))
+Senaryo kartını dağıtın ve okumaları için dört dakika verin. Okurken varlıkların altını çizsinler; birazdan birlikte listeleyeceğiz.""", glow=(V2, P2))
 def _(i, n):
-    s = eyebrow("Senaryo · kurgusal laboratuvar", 190)
+    s = eyebrow("Örnek laboratuvar · kurgusal", 190)
     s += f'<h2 data-build-in="rise 1 auto" style="position:absolute;left:128px;top:246px;width:1664px;font-family:{DISPLAY};font-size:120px;font-weight:800;letter-spacing:-4px;line-height:1;color:{CREAM}">HAL<span style="color:{T2}">MER</span></h2>'
     s += f'<p data-build-in="fade 2 auto" style="position:absolute;left:128px;top:384px;width:1500px;font-size:34px;line-height:1.3;color:{SKY}">Halys Üniversitesi Merkezi Araştırma Laboratuvarı</p>'
     facts = [("Users", "14 personel", "ve 9 lisansüstü öğrenci", T2), ("Activity", "5 birim", "kabul, LC-MS/MS, genomik, biyobanka, mikroskopi", V1),
@@ -110,157 +114,177 @@ def _(i, n):
         s += (f'<div data-build-in="pop {k + 3} auto" style="position:absolute;left:{128 + col * 563}px;top:{480 + r * 190}px;width:538px;height:166px;display:flex;flex-direction:row;gap:24px;align-items:center;padding:0px 30px;background:{INK2};border-radius:22px;border-left:8px solid {c}">'
               f'<x-icon name="{ic}" style="width:52px;height:52px;color:{c}"></x-icon><div style="flex:1;display:flex;flex-direction:column;gap:4px">'
               f'<p style="font-family:{DISPLAY};font-size:36px;font-weight:800;letter-spacing:-0.5px;color:{CREAM}">{a}</p><p style="font-size:24px;line-height:1.3;color:{SKY}">{b}</p></div></div>')
-    s += src("Ayrıntılar masanızdaki senaryo kartında. HALMER kurgusaldır; gerçek bir kurumu anlatmaz.", top=880, dark=True)
+    s += src("Ayrıntılar elinizdeki senaryo kartında. HALMER kurgusaldır; gerçek bir kurumu anlatmaz.", top=880, dark=True)
     return s
 
 
-# 7 morph: categories
-morph(D, "k-cats", "Tur 1 · Varlık haritası", [("CİHAZ", T2), ("VERİ", P2), ("HESAP", AMBER), ("İNSAN", None), ("AĞ", T1), ("HARİTA", T2)],
-      """Morf ara slaytı: cihaz, veri, hesap, insan, ağ ve hepsi bir arada harita. Varlık yalnız cihaz değildir; bugün en çok unutulan üç kategori veri, hesap ve insan olacak.""",
-      size=230, sub="Beş kategori, tek harita.", per=2.6)
+# 8 method in five steps
+ST = [("1", "Listele", "Beş kategoride aklınıza gelen her varlığı yazın.", V2), ("2", "Sahip ata", "Her satıra bir görev ya da kişi adı.", T3),
+      ("3", "Akışı izle", "Bir numunenin verisi nereden nereye gidiyor?", P2), ("4", "Kritikliği işaretle", "Düşük, orta ya da yüksek.", AMBER),
+      ("5", "Risk yaz", "En kritik üç varlığa birer risk cümlesi.", V1)]
+items = [f'<p style="width:72px;height:72px;border-radius:36px;background:{c};color:{"#FFFFFF" if c in (V2, T3, V1) else INK};font-family:{DISPLAY};font-size:36px;font-weight:800;text-align:center;line-height:72px">{a}</p>'
+         + H(t, 29, lh=1.18) + P(d_, 24, BODY2, lh=1.36) for a, t, d_, c in ST]
+content(D, "steps", "Örnek çözüm · HALMER", "Haritalama beş adımda",
+        cards_row(items, top=320, n=5, gap=20, height=360, accents=[c for *_, c in ST], pad="28px 26px")
+        + callout(720, "Şimdi bu beş adımı HALMER üzerinde birlikte yapacağız; sonra aynısını kendi laboratuvarınızda siz yapacaksınız.", label="Yöntem", icon="Play", build="rise 6 auto"),
+        ill="stairs",
+        notes="""Yöntem beş adım: listele, sahip ata, veri akışını izle, kritikliği işaretle ve en kritik üç varlığa birer risk cümlesi yaz.
+Sonraki üç slaytta bu adımları HALMER üzerinde gösteriyoruz. İsterseniz slaytları açmadan önce salona sorun: karttan hangi varlıkların altını çizdiniz? Gelen cevapları tahtaya yazıp sonra slaytla karşılaştırın.""")
 
-# 8 categories
-CT = [("Settings", "Cihaz", "Analiz cihazları, cihaz bilgisayarları, dondurucular, depolama cihazları, USB bellekler.", V2),
-      ("Database", "Veri", "Ham veri, raporlar, numune kayıtları, yöntem dosyaları, hasta kod anahtarı, sözleşmeler.", P2),
-      ("Key", "Yazılım ve hesap", "Cihaz yazılımları, ortak hesaplar, e-posta, bulut hesapları, uzaktan erişim araçları.", AMBER),
-      ("Users", "İnsan ve dış taraf", "Personel, öğrenciler, müşteriler, servis firmaları, temizlik firması, bilgi işlem.", T3),
-      ("Globe", "Ağ ve alan", "Yerel ağ, misafir Wi-Fi, ortak sürücü, kapılar, cihaz odaları, dolaplar.", V1)]
-items = [icon(ic, 46, TX.get(c, c)) + H(t, 29, lh=1.18) + P(d_, 24, BODY2, lh=1.36) for ic, t, d_, c in CT]
-content(D, "cats", "Tur 1 · Varlık haritası", "Beş kategoride varlıklar",
-        cards_row(items, top=320, n=5, gap=20, height=380, accents=[c for *_, c in CT], pad="28px 26px")
-        + callout(740, "Her kategoriye bir yapışkan not rengi. Her notun altına bir sahip adı: sahibi olmayan varlık korunmaz.", label="Yöntem", icon="Lightbulb", build="rise 6 auto"),
-        ill="network",
-        notes="""Tur birin yöntemi. Beş kategori, beş renk yapışkan not: cihazlar, veriler, yazılım ve hesaplar, insanlar ve dış taraflar, ağ ve fiziksel alan.
-Her nota bir varlık yazılır, altına sahibinin unvanı. Sahip yazamadıkları varlık zaten ilk riskleridir.
-Sonra bir dış müşteri numunesini kabulden arşive kadar izleyip okları çizecekler: veri nerede duruyor, kim erişiyor, bir duraktan ötekine nasıl taşınıyor.""")
+# 9 worked example: the list
+ROWS = [("LC-MS/MS bilgisayarı", "Cihaz", "Kromatografi uzmanı", "Müşteri ham verisi, yöntemler", "Yüksek"),
+        ("Dizileme ham verisi (NAS)", "Veri", "Genomik uzmanı", "Proje ve müşteri dizileri", "Yüksek"),
+        ("Numune takip dosyası", "Veri", "Numune kabul sorumlusu", "Müşteri adları, numune kayıtları", "Yüksek"),
+        ("“lcms” ortak hesabı", "Hesap", "Sahibi yok", "Cihaz bilgisayarına tam erişim", "Yüksek"),
+        ("Servis firması", "Dış taraf", "Müdür yardımcısı", "Cihazlara uzaktan erişim", "Orta"),
+        ("Misafir Wi-Fi", "Ağ", "Bilgi işlem", "Cihazlarla aynı ağda", "Orta")]
+CW = [430, 180, 340, 470, 150]
+HD = ["Varlık", "Kategori", "Sahibi", "Tuttuğu veri ya da erişim", "Kritiklik"]
+body = (f'<div style="position:absolute;left:128px;top:296px;width:1664px;display:flex;flex-direction:row;gap:18px;padding:0px 28px">'
+        + "".join(f'<p style="width:{w}px;font-family:{MONO};font-size:24px;font-weight:600;letter-spacing:1px;color:{MUTE}">{tr_upper(h)}</p>' for w, h in zip(CW, HD)) + "</div>")
+for k, r in enumerate(ROWS):
+    none = r[2] == "Sahibi yok"
+    cells = ""
+    for j, (w, v) in enumerate(zip(CW, r)):
+        col = PT if (none and j == 2) else (PT if (j == 4 and v == "Yüksek") else (AMBERT if j == 4 else (TEXT if j == 0 else BODY2)))
+        wt = 700 if (j in (0, 4) or (none and j == 2)) else 400
+        cells += f'<p style="width:{w}px;font-size:26px;line-height:1.2;font-weight:{wt};color:{col}">{v}</p>'
+    body += (f'<div data-build-in="rise {k + 1} auto" style="position:absolute;left:128px;top:{340 + k * 78}px;width:1664px;height:68px;display:flex;flex-direction:row;gap:18px;align-items:center;padding:0px 28px;'
+             f'background:{PTINT if none else WHITE};border-radius:14px;border-left:8px solid {P2 if none else LINE};box-shadow:0 6px 18px rgba(29,37,84,0.06)">{cells}</div>')
+body += callout(820, "“Sahibi yok” yazdığınız her satır bir bulgudur. Silmeyin, işaretleyin.", label="Adım 1–2–4", icon="Warning", build="rise 8 auto")
+content(D, "demo-list", "Örnek çözüm · HALMER", "Liste böyle görünür", body, ill="layers",
+        notes="""Adım bir, iki ve dört bir arada: liste, sahip ve kritiklik. Satırlar tıkladıkça açılıyor; her satırda karttaki ilgili cümleyi hatırlatın.
+Dördüncü satıra dikkat çekin: "lcms" ortak hesabının sahibi yok. Hesap da bir varlıktır ve sahibi olmayan varlık korunmaz. Bu tür satırları silmeyin; onlar ilk bulgularınızdır.
+Bu altı satır örnek; HALMER'in tam listesi otuzun üzerinde varlık içerir. Ekiplerden kendi laboratuvarları için en az on beş satır bekliyoruz.""")
 
-# 9 round 1
-timed("tur1", "Tur 1 · 25 dakika", "Haritayı<br>kurun", [("Database", "Beş kategoride varlıkları yapışkan notlara yazın", T2),
-                                                         ("Users", "Her varlığın altına bir sahip yazın", AMBER),
-                                                         ("Link", "Numuneden rapora veri akışını oklarla çizin", P1),
-                                                         ("CheckCircle", "Form 1 ve Form 2’yi doldurun", V1)], 25,
-      """Tur bir, yirmi beş dakika. Sayaç slayt açılınca başlar; yönergeyi bir önceki slaytta bitirip bu slayda geçin.
-Onuncu dakikada masaları dolaşıp sorun: haritanızda kaç insan ve kaç hesap var? Yalnız cihaz yazan masaya "bu cihazın ürettiği veri yarın nerede olacak" diye sorun.
-Son beş dakikada veri akışına geçmeyen masaları uyarın: verinin laboratuvarın denetiminden çıktığı noktaları kırmızıyla işaretlesinler.""")
 
-# 10 CIA
-CIA = [("Lock", "Gizlilik", "Kim görmemeli?", "Müşteri raporunun rakibin eline geçmesi; hasta kod anahtarının açıkta durması.", V2),
-       ("Verified", "Bütünlük", "Kim değiştirmemeli?", "Ham verinin ya da numune kaydının fark edilmeden değişmesi.", P2),
-       ("Clock", "Erişilebilirlik", "Ne zaman lazım?", "Tek kopya verinin silinmesi; cihazın günlerce çalışmaması; alarmın kimseye ulaşmaması.", AMBER)]
-items = [icon(ic, 48, TX.get(c, c)) + H(t, 34) + f'<p style="font-family:{MONO};font-size:24px;font-weight:600;color:{TX.get(c, c)}">{q}</p>' + P(d_, 26, BODY2, lh=1.38)
-         for ic, t, q, d_, c in CIA]
-content(D, "cia", "Tur 2 · Riskler", "Ne ters gidebilir?",
-        cards_row(items, top=320, height=380, accents=[c for *_, c in CIA], pad="32px 32px")
-        + callout(740, "“[Neden] yüzünden [varlık] üzerinde [olay] olursa [sonuç] doğar.” Her risk tek bir cümle.", label="Risk cümlesi", icon="Chat", build="rise 5 auto"),
+# 10 worked example: data flow
+@dark("demo-flow", """Adım üç: veri akışı. Bir dış müşteri numunesini kabulden müşteriye kadar izliyoruz. Her durakta iki soru: veri nerede duruyor ve bir sonraki durağa nasıl gidiyor?
+Kırmızı etiketler verinin laboratuvarın denetiminden çıktığı ya da korumasız kaldığı noktalar: etikette açık müşteri adı, ortak hesap, tek kopya ham veri, kişisel bulut ve yapay zekâ aracı, kişisel e-posta.
+Liste size neyiniz olduğunu söyler; akış ise nerede kaybedebileceğinizi gösterir. Ekipler de tahtada tek bir numunenin ya da veri setinin yolunu çizecek.""", glow=(P2, V2))
+def _(i, n):
+    s = eyebrow("Örnek çözüm · HALMER · adım 3", 190)
+    s += f'<h2 data-build-in="rise 1 auto" style="position:absolute;left:128px;top:246px;width:1500px;font-family:{DISPLAY};font-size:68px;font-weight:800;letter-spacing:-2px;line-height:1.05;color:{CREAM}">Bir numunenin yolculuğu</h2>'
+    s += f'<div style="position:absolute;left:180px;top:468px;width:1560px;height:6px;border-radius:3px;background:{INK3}"></div>'
+    ND = [("Numune kabul", "Excel dosyası, ortak sürücü", "Etikette müşteri adı açık", P2), ("Cihaz", "LC-MS/MS, dizileme", "Ortak hesapla çalışılır", P2),
+          ("Ham veri", "Cihaz bilgisayarı, NAS", "Tek kopya", P2), ("Analiz", "Uzmanın bilgisayarı", "Kişisel bulut, yapay zekâ aracı", P2),
+          ("Rapor", "PDF, ortak sürücü", "Herkes değiştirebilir", AMBER), ("Müşteri", "E-posta", "Kişisel e-posta adresi", P2)]
+    for k, (t, w, chip, c) in enumerate(ND):
+        x = 128 + k * 283
+        s += (f'<div data-build-in="pop {k + 2} auto" style="position:absolute;left:{x}px;top:390px;width:250px;height:164px;display:flex;flex-direction:column;gap:8px;justify-content:center;padding:0px 22px;background:{INK2};border-radius:20px;border-top:6px solid {T2}">'
+              f'<p style="font-family:{DISPLAY};font-size:28px;font-weight:700;color:{CREAM}">{t}</p><p style="font-size:24px;line-height:1.25;color:{SKY}">{w}</p></div>')
+        s += (f'<p data-build-in="rise {k + 8} auto" style="position:absolute;left:{x}px;top:580px;width:250px;height:112px;padding:14px 18px;border-radius:16px;background:{c};color:{"#FFFFFF" if c == P2 else INK};font-size:24px;font-weight:600;line-height:1.25">{chip}</p>')
+    s += f'<p data-build-in="fade 14 auto" style="position:absolute;left:128px;top:740px;width:1500px;font-size:30px;line-height:1.4;color:{CREAM}">Liste neyiniz olduğunu söyler. Akış, onu nerede kaybedebileceğinizi gösterir.</p>'
+    s += src("Renkli etiketler: verinin laboratuvarın denetiminden çıktığı ya da korumasız kaldığı noktalar.", top=880, dark=True)
+    return s
+
+
+# 11 worked example: top three and risks
+RK = [("LC-MS/MS bilgisayarı", "Bütünlük", "Ortak hesap ve yazılı parola yüzünden yöntem dosyası, kimin değiştirdiği bilinmeden değişirse sonuçlar savunulamaz.", P2),
+      ("Dizileme ham verisi", "Erişilebilirlik", "Tek kopya cihazla aynı odada durduğu için disk arızasında ham veri geri getirilemez.", AMBER),
+      ("Hasta kod anahtarı", "Gizlilik", "Anahtar sonuçlarla aynı klasörde durduğu için klasöre erişen herkes hastaları tanımlayabilir.", V2)]
+items = [f'<div style="display:flex;flex-direction:row;gap:14px;align-items:center">{icon("Star", 40, TX.get(c, c))}<p style="font-family:{MONO};font-size:24px;font-weight:600;letter-spacing:1px;color:{TX.get(c, c)}">{tr_upper(v)}</p></div>'
+         + H(t, 32) + P(d_, 26, BODY2, lh=1.4) for t, v, d_, c in RK]
+content(D, "demo-risk", "Örnek çözüm · HALMER · adım 5", "En kritik üç ve riskleri",
+        cards_row(items, top=320, height=390, accents=[c for *_, c in RK], pad="32px 32px")
+        + callout(750, "“[Neden] yüzünden [varlık] üzerinde [olay] olursa [sonuç] doğar.” Her risk tek bir cümle.", label="Risk cümlesi", icon="Chat", build="rise 5 auto"),
         ill="shield",
-        notes="""Tur ikinin yöntemi. Haritadaki her önemli varlık için üç soru: kim görmemeli, kim değiştirmemeli, ne zaman lazım. Bunlar sabah konuşulan gizlilik, bütünlük ve erişilebilirlik.
-Risk tek cümleyle yazılır: neden, varlık, olay, sonuç. "Siber saldırı olabilir" bir risk cümlesi değildir; "ortak parola yüzünden cihaz bilgisayarındaki yöntem dosyası kim tarafından değiştirildiği bilinmeden değişirse sonuçlar geçersiz olur" bir risk cümlesidir.
-Yalnız dış saldırganı düşünmesinler: en olası riskler sıradan hatalardır.""")
+        notes="""Adım beş: en kritik üç varlık ve her biri için bir risk cümlesi. Üç soru yardımcı olur: kim görmemeli, kim değiştirmemeli, ne zaman lazım. Yani gizlilik, bütünlük ve erişilebilirlik.
+Risk tek cümleyle yazılır: neden, varlık, olay, sonuç. "Siber saldırı olabilir" bir risk cümlesi değildir.
+Örnek çözüm burada bitiyor. Soru varsa şimdi alın; sonra ekiplere ayrılıyoruz.""")
 
-# 11 round 2
-timed("tur2", "Tur 2 · 20 dakika", "Riskleri<br>yazın", [("Search", "Haritadaki her önemli varlık için: ne ters gidebilir?", T2),
-                                                         ("Chat", "Her riski tek cümleyle Form 3’e yazın", AMBER),
-                                                         ("Lock", "Gizlilik, bütünlük, erişilebilirlik: her birinden en az iki", P1),
-                                                         ("Warning", "Karttaki üç olaya dönün: neden yaşandı?", V1)], 20,
-      """Tur iki, yirmi dakika. Hedef en az sekiz risk cümlesi.
-Masaları dolaşırken dengeye bakın: çoğu masa yalnız gizlilik riski yazar. Erişilebilirlik için "bu veri yarın sabah yok olsa ne olur", bütünlük için "biri bu kaydı değiştirse kim fark eder" diye sorun.
-On ikinci dakikada karttaki üç olayı hatırlatın: her biri haritadaki bir zayıflığın sonucu.""", glow=(P2, V2))
+# 12 two teams
+TM = [("CÜTAM", "Araştırma merkezi ekibi", T3), ("CÜTFAM", "Tıp Fakültesi laboratuvarı ekibi", P2)]
+items = [f'<p style="font-family:{DISPLAY};font-size:88px;font-weight:800;letter-spacing:-3px;line-height:1;color:{TX.get(c, c)}">{t}</p>' + H(d_, 32)
+         + P("Kendi laboratuvarınızı, kendi tahtanızda haritalayın.", 28, BODY2, lh=1.4) for t, d_, c in TM]
+RL3 = [("Book", "Yazıcı", "tahtaya yazar"), ("Clock", "Zaman tutucu", "süreyi izler"), ("PaperPlane", "Sözcü", "sonucu anlatır")]
+roles = "".join(f'<div style="flex:1;display:flex;flex-direction:row;gap:16px;align-items:center">{icon(ic, 40, AMBER)}<p style="font-size:28px;color:{CREAM}"><b>{a}</b> {b}</p></div>' for ic, a, b in RL3)
+content(D, "teams", "Ekip çalışması", "İki ekip, iki laboratuvar",
+        cards_row(items, top=320, n=2, height=330, accents=[c for *_, c in TM], pad="40px 44px", gap=32, kind="pop")
+        + f'<div data-build-in="rise 3 auto" style="position:absolute;left:128px;top:700px;width:1664px;display:flex;flex-direction:row;gap:28px;align-items:center;padding:28px 40px;background:{INK};border-radius:22px">{roles}</div>',
+        ill="people",
+        notes="""Şimdi iki ekibe ayrılıyoruz: CÜTAM ekibi ve CÜTFAM ekibi. Her ekip kendi laboratuvarını kendi tahtasında haritalayacak.
+Her ekip üç kişi seçsin: tahtaya yazacak bir yazıcı, süreyi izleyecek bir zaman tutucu ve sonucu anlatacak bir sözcü. Diğer herkes varlık söyler.
+Ekipte farklı görevlerden insanlar var: cihaz kullanıcısı, numune kabul, yönetim. Herkes kendi gördüğü varlıkları söylesin; en iyi liste böyle çıkar.""")
 
-# 12 matrix
-LIK = ["1 · Seyrek", "2 · Yılda bir", "3 · Sık"]
-IMP = [("3 · Ağır", 3), ("2 · Orta", 2), ("1 · Hafif", 1)]
+# 13 board template
+BH = [("Varlık", 300), ("Kategori", 170), ("Sahibi", 210), ("Veri", 190), ("Kritiklik", 150)]
+board = "".join(f'<p style="width:{w}px;font-family:{MONO};font-size:24px;font-weight:600;color:{V3}">{tr_upper(h)}</p>' for h, w in BH)
+lines = "".join(f'<div style="height:3px;border-radius:2px;background:{LINE}"></div>' for _ in range(5))
+body = (f'<div data-build-in="fade 1 auto" style="position:absolute;left:128px;top:300px;width:1090px;height:510px;display:flex;flex-direction:column;gap:56px;padding:36px 40px;background:{WHITE};border-radius:22px;border:4px solid {INK};box-shadow:0 12px 34px rgba(29,37,84,0.09)">'
+        f'<div style="display:flex;flex-direction:row;gap:0px">{board}</div>{lines}'
+        f'<p style="font-size:26px;font-weight:600;color:{PT}">★ = en kritik üç varlık; yanına bir risk cümlesi</p></div>')
+CK = [("En az 15 satır", V2), ("Her kategoriden en az iki varlık", T3), ("Her satırda bir sahip; yoksa “sahibi yok”", P2), ("Bir numunenin ya da veri setinin yolu", AMBER), ("En kritik üçe yıldız ve risk cümlesi", V1)]
+for k, (t, c) in enumerate(CK):
+    body += (f'<div data-build-in="rise {k + 2} auto" style="position:absolute;left:1260px;top:{300 + k * 104}px;width:532px;height:88px;display:flex;flex-direction:row;gap:18px;align-items:center;padding:0px 24px;background:{WHITE};border-radius:16px;border-left:8px solid {c};box-shadow:0 6px 18px rgba(29,37,84,0.06)">'
+             f'{icon("CheckCircle", 36, TX.get(c, c))}<p style="flex:1;font-size:26px;line-height:1.25;font-weight:600;color:{TEXT}">{t}</p></div>')
+content(D, "board", "Ekip çalışması", "Tahtanız böyle görünsün", body, ill="checklist",
+        notes="""Tahtanın düzeni. Beş sütun: varlık, kategori, sahibi, tuttuğu veri ve kritiklik. Sütun başlıklarını şimdi tahtaya yazdırın.
+Beş hedef: en az on beş satır; her kategoriden en az iki varlık; her satırda bir sahip, yoksa açıkça "sahibi yok"; tahtanın altına bir numunenin ya da veri setinin yolu; ve en kritik üç varlığa yıldız ile birer risk cümlesi.
+Yapışkan not kullanmak isteyen ekip her kategoriye bir renk versin.""")
 
+# 14 team work
+timed("work", "Ekip çalışması · 30 dakika", "Kendi<br>laboratuvarınız", [("Database", "Varlıkları beş kategoride tahtaya yazın", T2),
+                                                                      ("Users", "Her satıra bir sahip yazın", AMBER),
+                                                                      ("Link", "Bir numunenin yolunu izleyin: veri nereden çıkıyor?", P1),
+                                                                      ("Star", "En kritik üçe yıldız ve birer risk cümlesi", V1)], 30,
+      """Ekip çalışması, otuz dakika. Sayaç slayt açılınca başlar.
+İlk on beş dakika yalnız liste. On beşinci dakikada iki tahtayı da dolaşın ve sorun: tahtada kaç insan, kaç hesap, kaç dış firma var? Çoğu ekip yalnız cihaz yazar.
+Yirminci dakikada veri akışına ve kritikliğe geçsinler. Son beş dakika en kritik üç varlık ve risk cümleleri; sözcü bu sırada anlatacağını hazırlasın.
+Takılan ekibe sorulacak soru: bu cihazın ürettiği veri yarın nerede olacak ve ona kim erişebilecek?""")
 
-def cell_col(v):
-    return (P2, "#FFFFFF") if v >= 6 else ((AMBER, INK) if v >= 3 else (T2, INK))
+# 15 spokespeople
+timed("share", "Sunum · 20 dakika", "Sözcüler<br>anlatıyor", [("Chart", "Kaç varlık yazdınız? Hangi kategori zayıf kaldı?", T2),
+                                                             ("Search", "Sizi en çok şaşırtan satır hangisiydi?", AMBER),
+                                                             ("Star", "En kritik üç varlığınız ve riskleri", P1),
+                                                             ("Warning", "Sahibi olmayan satırlar", V1)], 20,
+      """Sunum, yirmi dakika: her sözcü sekiz dakika anlatır, iki dakika soru alır. Sayaç toplam süreyi gösterir; onuncu dakikada ikinci ekibe geçin.
+Sözcü dört şeyi anlatsın: kaç varlık yazdılar ve hangi kategori zayıf kaldı; en çok şaşırtan satır; en kritik üç varlık ve riskleri; sahibi olmayan satırlar.
+Diğer ekip dinlerken kendi tahtasında eksik kalanı not etsin: karşı tahtada olup bizde olmayan ne var?""", glow=(T3, P2), title_size=96)
 
-
-body = f'<p style="position:absolute;left:128px;top:292px;width:190px;font-family:{MONO};font-size:24px;font-weight:600;letter-spacing:2px;color:{MUTE}">ETKİ</p>'
-k = 0
-for r, (lab, iv) in enumerate(IMP):
-    y = 336 + r * 132
-    body += f'<p style="position:absolute;left:128px;top:{y + 42}px;width:190px;font-size:26px;font-weight:600;color:{TEXT}">{lab}</p>'
-    for c_ in range(3):
-        v = iv * (c_ + 1)
-        bg, fg = cell_col(v)
-        k += 1
-        body += (f'<p data-build-in="pop {k} auto" style="position:absolute;left:{330 + c_ * 232}px;top:{y}px;width:220px;height:120px;border-radius:18px;background:{bg};color:{fg};'
-                 f'font-family:{DISPLAY};font-size:52px;font-weight:800;text-align:center;line-height:120px">{v}</p>')
-for c_, lab in enumerate(LIK):
-    body += f'<p style="position:absolute;left:{330 + c_ * 232}px;top:740px;width:220px;font-size:26px;font-weight:600;text-align:center;color:{TEXT}">{lab}</p>'
-body += f'<p style="position:absolute;left:330px;top:782px;width:684px;font-family:{MONO};font-size:24px;font-weight:600;letter-spacing:2px;text-align:center;color:{MUTE}">OLASILIK</p>'
-DEC = [("6–9", "Hemen", "Bu ay içinde bir ilk adım.", P2), ("3–4", "Planla", "Bu dönem; sahibi ve tarihi belli.", AMBER), ("1–2", "İzle", "Yılda bir gözden geçir.", T2)]
-for j, (rng, t, d_, c) in enumerate(DEC):
-    body += (f'<div data-build-in="rise {10 + j} auto" style="position:absolute;left:1090px;top:{336 + j * 132}px;width:702px;height:120px;display:flex;flex-direction:row;gap:24px;align-items:center;padding:0px 30px;background:{WHITE};border-radius:18px;border-left:8px solid {c};box-shadow:0 8px 24px rgba(29,37,84,0.07)">'
-             f'<p style="width:110px;font-family:{DISPLAY};font-size:40px;font-weight:800;color:{TX.get(c, c)}">{rng}</p><p style="width:150px;font-size:30px;font-weight:700;color:{TEXT}">{t}</p><p style="flex:1;font-size:26px;line-height:1.3;color:{BODY2}">{d_}</p></div>')
-body += callout(826, "Puan = olasılık × etki. Tartışma uzarsa yüksek olanı yazın ve devam edin.", label="Kural", icon="Lightning", build="rise 13 auto")
-content(D, "matrix", "Tur 3 · Öncelik", "Olasılık × etki = öncelik", body, ill="gauge",
-        notes="""Tur üçün yöntemi. Her riske iki puan: olasılık bir ile üç, etki bir ile üç. Çarpım öncelik puanıdır.
-Altı ile dokuz arası hemen ele alınır, üç ile dört planlanır, bir ile iki izlenir. Ölçek bu alıştırma için sadeleştirilmiş üç basamaklı bir ölçektir; puanların tanımı Form 3'ün altında yazıyor.
-Kural: bir puan üzerinde bir dakikadan fazla tartışmasınlar; yüksek olanı yazıp devam etsinler. Amaç kusursuz puan değil, sıralama.""")
-
-# 13 round 3
-timed("tur3", "Tur 3 · 15 dakika", "İlk üçü<br>seçin", [("Chart", "Her riske olasılık ve etki puanı verin", T2),
-                                                        ("Star", "En yüksek puanlı üç riski Form 4’e yazın", AMBER),
-                                                        ("Play", "Her biri için bir ilk adım, bir sahip, bir tarih", P1),
-                                                        ("ThumbsUp", "İlk adım pazartesi sabahı yapılabilir olsun", V1)], 15,
-      """Tur üç, on beş dakika. İlk yedi dakika puanlama, kalan sekiz dakika ilk üç risk ve ilk adımlar.
-İlk adımı sınayın: küçük, somut ve tek bir kişinin yapabileceği bir iş mi? "Farkındalık artırılacak" ya da "yeni sistem alınacak" ilk adım değildir. "Parolanın yazılı olduğu kâğıt kaldırılacak, parola değiştirilecek" bir ilk adımdır.
-Sözcüler son iki dakikada tek cümlelerini hazırlasın.""", glow=(AMBER, V2))
-
-# 14 share
-timed("share", "Paylaşım · 15 dakika", "Masa başına<br>iki dakika", [("Warning", "En büyük riskiniz hangisi?", P1),
-                                                                   ("Search", "Neden o? Hangi varlık, hangi sonuç?", T2),
-                                                                   ("Play", "İlk adımınız ne, kim yapacak?", AMBER)], 15,
-      """Paylaşım. Her sözcü iki dakika: en büyük risk, neden o, ilk adım. Sayaç toplam süreyi gösterir; masa sayısına göre sözcü başına süreyi ayarlayın.
-Tekrar eden bulguları panoya çetele ile işaretleyin. Bir masa başka masanın söylediğini tekrar edecekse ikinci riskini anlatsın.
-Yorum yapmayın, yalnız not alın; ortak bulguları bir sonraki slaytta toplayacağız.""", glow=(T3, P2), title_size=96)
-
-# 15 common findings
-FD = [("Key", "Ortak hesap, yazılı parola", "Kimin ne yaptığı bilinmez.", V2), ("Wrench", "Yamasız cihaz bilgisayarı", "Eski işletim sistemi, kapalı antivirüs, açık internet.", P2),
-      ("Link", "Kalıcı uzaktan erişim", "Servis bağlantısı yıllardır aynı parolayla açık.", AMBER), ("Database", "Tek kopya ham veri", "Yedek düzensiz; geri yükleme hiç denenmemiş.", T3),
-      ("Cloud", "Denetim dışına çıkan veri", "Kişisel e-posta, kişisel bulut, herkese açık yapay zekâ aracı.", V1), ("Users", "Kapatılmayan hesaplar", "Ayrılan öğrenci ve personelin erişimi sürüyor.", T2)]
-items = [f'<div style="display:flex;flex-direction:row;gap:16px;align-items:center">{icon(ic, 40, TX.get(c, c))}{H(t, 28, lh=1.2, extra="flex:1;")}</div>' + P(d_, 25, BODY2, lh=1.36) for ic, t, d_, c in FD]
-content(D, "findings", "Ortak bulgular", "Masalar genellikle bunları bulur",
-        cards_row(items, top=310, n=3, height=200, row_gap=22, accents=[c for *_, c in FD], pad="26px 30px", gap=22, kind="pop")
-        + callout(770, "Altısının da ilk adımı para istemez: bir karar, bir liste ya da bir deneme yeterlidir.", label="Dikkat", icon="Lightbulb", build="rise 8 auto"),
+# 16 compare
+CMP = [("Users", "Ortak olan ne?", "İki tahtada da bulunan varlıklar: ağ, e-posta, bilgi işlem, servis firmaları.", V2),
+       ("Search", "Kimde ne eksik?", "Karşı tahtada olup sizde olmayan kategori ya da satır.", T3),
+       ("Warning", "Kaç satır sahipsiz?", "“Sahibi yok” yazan her satır için bir aday belirleyin.", P2),
+       ("Link", "Veri nereden çıkıyor?", "E-posta, USB bellek, bulut, uzaktan erişim: laboratuvarın dışına açılan kapılar.", AMBER)]
+items = [icon(ic, 46, TX.get(c, c)) + H(t, 30, lh=1.18) + P(d_, 25, BODY2, lh=1.38) for ic, t, d_, c in CMP]
+content(D, "compare", "Kapanış · 5 dakika", "İki tahtaya birlikte bakalım",
+        cards_row(items, top=320, height=360, accents=[c for *_, c in CMP], pad="30px 30px")
+        + callout(720, "Tahtaların fotoğrafını çekin ve kurum içinde tutun: bu liste bir saldırgan için de haritadır.", label="Çıkarken", icon="Lock", build="rise 5 auto"),
         ill="scan",
-        notes="""Ortak bulgular. Kartları tek tek açın ve her birinde salona sorun: kaç masa bunu yazdı? Panodaki çeteleyle karşılaştırın.
-Altı bulgu: ortak hesap ve yazılı parola; yamasız cihaz bilgisayarı; kalıcı uzaktan erişim; tek kopya ham veri; denetim dışına çıkan veri; kapatılmayan hesaplar.
-Vurgulayın: altısının da ilk adımı bütçe gerektirmez. Senaryo kartında toplam yirmi bulgu vardı; hiçbir masanın hepsini bulması beklenmez.
-Üçüncü olayın, yani rakibin sonuçları bilmesinin tek bir cevabı yok; bu belirsizlik gerçek hayattaki durumun kendisidir.""")
+        notes="""Kapanış, beş dakika. İki tahtayı yan yana değerlendirin: ortak olan ne, kimde ne eksik, kaç satır sahipsiz ve veri laboratuvardan hangi kapılardan çıkıyor.
+Tahtaların fotoğrafını çektirin. Uyarı: bu liste gerçek laboratuvarlarınızı anlatıyor; fotoğraflar kurum içinde kalsın, sosyal medyada ya da dış yazışmada paylaşılmasın.
+Bu listeler tamamlanmış envanter değil, başlangıçtır.""")
 
-# 16 take home
-HM = [("01", "İlk on varlık", "Kendi laboratuvarınızın ilk on varlığını yazın; en az ikisi veri, ikisi hesap olsun.", V2),
-      ("02", "Her birine bir sahip", "Yanına bir ad yazamadığınız satır, ilk riskinizdir.", P2),
-      ("03", "En değerli veri", "Kaç kopyası var, kopyalar nerede duruyor, en son ne zaman geri yüklendi?", AMBER)]
+# 17 next step
+HM = [("01", "Listeyi tamamlayın", "Tahtadaki listeyi bir hafta içinde yazıya geçirin; salonda aklınıza gelmeyenleri ekleyin.", V2),
+      ("02", "Sahipleri onaylatın", "Her satırdaki sahip, o varlıktan sorumlu olduğunu bilsin. “Sahibi yok” satırı kalmasın.", P2),
+      ("03", "Yılda bir güncelleyin", "Yeni cihaz, yeni yazılım, ayrılan personel: liste yaşayan bir belgedir.", AMBER)]
 items = [numcard(a, t, d_, TX.get(c, c)) for a, t, d_, c in HM]
-content(D, "home", "Kapanış · 5 dakika", "Kendi laboratuvarınızda ilk adım",
+content(D, "home", "Sonraki adım", "Tahtadan envantere",
         cards_row(items, top=320, height=380, accents=[c for *_, c in HM], pad="32px 32px")
-        + callout(740, "Form 4’ü masadan çıkmadan teslim edin. Haritanızın fotoğrafını çekin; kontrol listesi sayfası sizde kalır.", label="Çıkarken", icon="CheckCircle", build="rise 5 auto"),
+        + callout(740, "Bir olay olduğunda ilk bakılan belge varlık listesidir; yarınki masa başı tatbikatta bunu göreceksiniz.", label="Yarın", icon="Play", build="rise 5 auto"),
         ill="flag",
-        notes="""Kapanış, beş dakika. HALMER'den kendi laboratuvarınıza dönüyoruz. Üç iş: ilk on varlığı yazmak, her birine bir sahip atamak ve en değerli verinin kopyalarını saymak.
-Bunu salonda yüksek sesle paylaşmalarını istemeyin; herkes kendi kâğıdına yazsın. Kontrol listesi sayfası katılımcıda kalıyor.
-Form 4'leri toplayın: masa bazındaki bulgular eğitim raporunda kullanılacak.""")
+        notes="""Sonraki adım. Tahtadaki liste bir başlangıç: bir hafta içinde yazıya geçirin, her sahibin sorumluluğunu bildiğinden emin olun ve listeyi yılda bir güncelleyin.
+Mevcut bir envanteriniz varsa bugünkü listeyle karşılaştırın; fark, envanterin eksiğidir.
+Yarın olay müdahalesi tatbikatında varlık listesinin neden ilk bakılan belge olduğunu göreceğiz.""")
 
-# 17 refs
+# 18 refs
 refs(D, "refs", [
     "National Institute of Standards and Technology. The NIST Cybersecurity Framework (CSF) 2.0. NIST CSWP 29; 2024. doi:10.6028/NIST.CSWP.29",
     "Joint Task Force Transformation Initiative. Guide for Conducting Risk Assessments. NIST SP 800-30 Rev. 1; 2012. doi:10.6028/NIST.SP.800-30r1",
     "Murch RS, So WK, Buchholz WG, Raman S, Peccoud J. Cyberbiosecurity: An Emerging New Discipline to Help Safeguard the Bioeconomy. Front Bioeng Biotechnol. 2018;6:39. doi:10.3389/fbioe.2018.00039",
-    "HALMER senaryosu ve üç basamaklı puan ölçeği bu çalıştay için hazırlanmıştır; senaryo kurgusaldır.",
-], notes="""Kaynaklar. Varlık yönetimi ve risk değerlendirme başlıkları NIST Siber Güvenlik Çerçevesi 2.0'ın Tanımla işlevinden; olasılık ve etki yaklaşımı NIST SP 800-30'dan. Üç DOI Crossref'te doğrulandı.
-Üç basamaklı puan ölçeği bu alıştırma için sadeleştirildi; kaynaklarda bu biçimde yer almaz.""", size=26)
+    "HALMER senaryosu bu çalıştay için hazırlanmıştır ve kurgusaldır.",
+], notes="""Kaynaklar. Varlık yönetimi ve risk değerlendirme başlıkları NIST Siber Güvenlik Çerçevesi 2.0'ın Tanımla işlevinden; risk cümlesi yaklaşımı NIST SP 800-30'dan. Üç DOI Crossref'te doğrulandı.""", size=26)
 
-# 18 close
+# 19 close
 statement(D, "close", [("Harita hazır.", None), ("Sıra korumada.", T2)],
           """Kahve arası, on beş dakika. Dönüşte Prof. Dr. Ahmet Altun ile biyoteknolojiyi siber hırsızlıktan korumak oturumu var; bugün haritaya yazdığınız varlıkların nasıl çalındığını gerçek vakalarla göreceğiz.""",
           eyebrow_="Kahve arası · 14:30–14:45", sub="14:45’te devam: Üniversitelerde biyoteknolojiyi siber hırsızlıktan korumak.",
           right_html=emb("capsid", 1240, 240, 560, 560, PAL, rings=True, burst=True, spin=.3, t1=T1, v1=V1, v3=V3), size=104, width=1080)
 
-SECTIONS = {"s1": {"description": "Kurulum", "start": "cover"}, "s2": {"description": "Tur 1 · Varlık haritası", "start": "k-cats"},
-            "s3": {"description": "Tur 2 · Riskler", "start": "cia"}, "s4": {"description": "Tur 3 · Öncelik", "start": "matrix"},
-            "s5": {"description": "Paylaşım ve kapanış", "start": "share"}}
+SECTIONS = {"s1": {"description": "Giriş", "start": "cover"}, "s2": {"description": "Örnek laboratuvar ve örnek çözüm", "start": "lab"},
+            "s3": {"description": "Ekip çalışması", "start": "teams"}, "s4": {"description": "Sunum ve kapanış", "start": "share"}}
 
 if __name__ == "__main__":
     write_deck(sys.argv[1], TITLE, SECTIONS, D.render())
