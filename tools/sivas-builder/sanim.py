@@ -9,8 +9,9 @@ from anim import HEAD, BOOT, TAIL, JS as _JS  # noqa: E402
 
 # Robust sizing: the presenter (full screen, thumbnails, preloaded hidden slides) can resize the iframe without a
 # usable resize event, or start it at 0×0. Re-fit on every frame when the canvas size changes and tell listeners.
-BOOT = BOOT.replace("function s(n){f(", "function s(n){if(C.clientWidth!==W||C.clientHeight!==H){fit();dispatchEvent(new Event('resize'))}f(")
-assert "dispatchEvent" in BOOT
+BOOT = BOOT.replace("function s(n){f((n-t0)/1000);", "function s(n){try{if(C.clientWidth!==W||C.clientHeight!==H){fit();dispatchEvent(new Event('resize'))}f(Math.max(0,(n-t0)/1000))}catch(e){}")
+# t is clamped at 0 (the first rAF timestamp can precede t0) and a throwing frame never stops the loop
+assert "Math.max(0,(n-t0)/1000)" in BOOT
 
 JS = dict(_JS)
 JS["counter"] = JS["counter"].replace("toLocaleString('en-US'", "toLocaleString(P.loc||'tr-TR'").replace('const to=P.to', 'const to=P.to,_w=P.weight||800').replace("`600 ${P.size}px ${f}`", "`${_w} ${P.size}px ${f}`").replace('P.font||"Georgia, \'Times New Roman\', serif"', 'P.font||"__FONT__"')

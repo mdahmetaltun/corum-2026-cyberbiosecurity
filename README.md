@@ -56,6 +56,7 @@ Hilton Garden Inn Sivas · 16–17 Kasım 2026 · Kapsid kimliği, Canlı palet 
 | 5 | Açılış ve ön test | 1. Gün · 09:00 | [`decks/05-sivas-acilis-on-test`](decks/05-sivas-acilis-on-test) | 14 |
 | 6 | Biyoteknolojiyi siber hırsızlıktan korumak | 1. Gün · 14:45 | [`decks/06-sivas-siber-hirsizlik`](decks/06-sivas-siber-hirsizlik) | 28 |
 | 8 | Yeterlik kontrolü ve kapanış | 2. Gün · 14:15 | [`decks/08-sivas-kapanis-yeterlik`](decks/08-sivas-kapanis-yeterlik) | 14 |
+| 9 | Alıştırma 1 · Varlık haritası ve riskler | 1. Gün · 13:00 | [`decks/09-sivas-alistirma-1-varlik-haritasi`](decks/09-sivas-alistirma-1-varlik-haritasi) | 18 |
 
 Güncel programda Alıştırma 3 (MFA) yer almıyor; [`decks/07-sivas-mfa-alistirma`](decks/07-sivas-mfa-alistirma) (22 slayt) yedek olarak arşivde duruyor.
 
