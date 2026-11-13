@@ -91,121 +91,30 @@ content(D, "actors", "Tehdit aktörleri", "Kim çalar?",
 Devlet destekli gruplar sabırlı; aşı ve ilaç araştırması 2020'de bunun en net örneğiydi. Fidye çeteleri artık yalnız şifrelemiyor, önce kopyalıyor. İçeriden tehdit, yetkiyle gelir; kapıyı kırmaz. Fırsatçılar ise sadece açık kapı arar.
 Callout'u vurgulayın: savunmayı aktöre göre değil, kapıya göre kuracağız.""")
 
-# 8 ── morph: cases
-morph(D, "k-cases", "Beş vaka, beş ders", [("VAKALAR", None), ("UCSF", P2), ("EMA", T2), ("OHIO", AMBER), ("ILLUMINA", V1)],
-      """Morf ara slaytı. Harfler parçacıklara ayrılıp bir sonraki vakanın adına dönüşüyor: UCSF, EMA, Ohio, Illumina.
-Bunlar sırayla anlatacağımız vakalar. Her biri bilgi güvenliğinin farklı bir yüzünü gösteriyor.""",
-      sub="Fidye · değiştirilen veri · içeriden hırsızlık · cihaz açığı")
-
-
-# 9 ── UCSF
-@dark("ucsf", """Haziran 2020, Kaliforniya Üniversitesi San Francisco Tıp Fakültesi.
-NetWalker fidye yazılımı fakültedeki sınırlı bir BT ortamında sunucuları şifreledi. Üniversite, akademik çalışma için önemli verilere yeniden ulaşmak amacıyla yaklaşık 1,14 milyon dolar ödediğini açıkladı.
-Sayı sayarken durun. Sonra şunu sorun: bu laboratuvarların yedeği olsaydı ödeme gerekir miydi? Ders: fidyede kaybedilen asıl şey araştırma takvimidir.
-Kaynak: UCSF açıklaması, 26 Haziran 2020; BleepingComputer haberi.""", glow=(P2, V2))
-def _(i, n):
-    s = eyebrow("Haziran 2020 · UCSF Tıp Fakültesi · Fidye yazılımı", 210)
-    s += emb("counter", 128, 270, 760, 240, PAL, to=1.14, dec=2, size=220, fg=CREAM)
-    s += f'<p data-build-in="fade 1 auto" style="position:absolute;left:128px;top:510px;width:900px;font-family:{DISPLAY};font-size:44px;font-weight:700;color:{P1}">milyon dolar fidye ödendi</p>'
-    s += f'<p data-build-in="fade 2 auto" style="position:absolute;left:128px;top:590px;width:960px;font-size:30px;line-height:1.45;color:{SKY}">NetWalker, fakültedeki sınırlı bir BT ortamında sunucuları şifreledi. Üniversite, akademik çalışma için önemli verilere yeniden ulaşmak için ödeme yaptığını açıkladı.</p>'
-    s += (f'<div data-build-in="rise 3 auto" style="position:absolute;left:1180px;top:290px;width:612px;display:flex;flex-direction:column;gap:18px;padding:36px 40px;background:{INK2};border-radius:22px;border-top:6px solid {P2}">'
-          f'<p style="font-family:{MONO};font-size:24px;letter-spacing:2px;font-weight:600;color:{P1}">DERS</p>'
-          + H("Fidyede kaybedilen asıl şey araştırma takvimidir.", 38, CREAM)
-          + P("Çevrimdışı ve denenmiş bir yedek, ödeme ile yeniden kurulum arasındaki farktır.", 28, SKY, lh=1.4) + "</div>")
-    s += src("Kaynak: UCSF kamu açıklaması, 26 Haziran 2020; BleepingComputer, Haziran 2020.", top=880, dark=True)
-    return s
-
-
-# 10 ── EMA
-EV = [("9 Ara 2020", "EMA siber saldırıyı duyurdu.", V2), ("Ara 2020", "Pfizer/BioNTech aşı başvurusuna ait belgelere erişildi.", V2),
-      ("Oca 2021", "Belgelerin bir kısmı internette yayımlandı.", P2), ("15 Oca 2021", "EMA: bazı yazışmalar yayımlanmadan önce değiştirildi.", P2)]
-tl = (f'<svg aria-label="" width="1664" height="20" viewBox="0 0 1664 20" style="position:absolute;left:128px;top:330px;width:1664px;height:20px">'
-      f'<style>.l{{stroke-dasharray:1664;stroke-dashoffset:1664;animation:l 2.6s cubic-bezier(.6,0,.2,1) forwards}}@keyframes l{{to{{stroke-dashoffset:0}}}}{RM}</style>'
-      f'<line x1="0" y1="10" x2="1664" y2="10" stroke="{LINE}" stroke-width="4"/><line class="l" x1="0" y1="10" x2="1664" y2="10" stroke="{P2}" stroke-width="4"/></svg>')
-body = tl
-for k, (d_, t, c) in enumerate(EV):
-    x = 128 + k * 424
-    body += (f'<div data-build-in="rise {k + 1} auto" style="position:absolute;left:{x}px;top:326px;width:392px;display:flex;flex-direction:column;gap:14px">'
-             f'<div style="width:28px;height:28px;border-radius:14px;background:{c};border:5px solid {PAPER}"></div>'
-             f'<p style="font-family:{MONO};font-size:26px;font-weight:600;color:{c if c != P2 else PT}">{d_}</p>'
-             f'<p style="font-size:28px;line-height:1.38;color:{TEXT}">{t}</p></div>')
-body += callout(720, "Bütünlük saldırısında soru “Kim gördü?” değil, “Hangi sürüm gerçek?” sorusudur. İmzalı ve sürümlü kayıt bu soruya cevap verir.", label="Ders", icon="FileWarning", build="rise 5 auto")
-body += src("Kaynaklar: Avrupa İlaç Ajansı (EMA) açıklamaları, 9 Aralık 2020 ve 15 Ocak 2021; RAPS haberi, Ocak 2021.", top=900)
-content(D, "ema", "Aralık 2020 · Avrupa İlaç Ajansı", "Çalınan belgeler değiştirilerek sızdırıldı", body, ill="phish",
-        notes="""İkinci vaka bir düzenleyici kurum: Avrupa İlaç Ajansı.
-9 Aralık 2020'de EMA bir siber saldırıyı duyurdu; Pfizer/BioNTech aşı başvurusuna ait belgelere erişilmişti. Ocak'ta belgelerin bir kısmı internette yayımlandı. 15 Ocak 2021'de EMA, bazı yazışmaların yayımlanmadan önce değiştirildiğini açıkladı.
-Bu vakanın dersi bütünlük: amaç yalnız çalmak değil, güveni sarsmak. Bir laboratuvar için karşılığı şu: ham verinin değiştirilmediğini kanıtlayabiliyor musunuz?""")
-
-
-# 11 ── DOJ indictment
-@dark("doj", """Üçüncü vaka, bir iddianame. 21 Temmuz 2020'de ABD Adalet Bakanlığı iki kişiyi suçladı: Li Xiaoyu ve Dong Jiazhi.
-İddianameye göre bu ikili on yılı aşkın bir süre boyunca dünya çapında yüksek teknoloji, ilaç ve diğer sektörlerden şirketleri hedef aldı; 2020'de COVID-19 aşı, tedavi ve test araştırması yapan kuruluşları taradı.
-Not: bunlar iddia; suçlama mahkûmiyet değildir. Vurgulanacak nokta zaman ölçeği: on yıl. Fark edilmeden kalmak, bu işin asıl becerisi.
-Kaynaklar: ABD Adalet Bakanlığı basın açıklaması, 21 Temmuz 2020; NPR haberi.""", glow=(V3, P2))
-def _(i, n):
-    s = eyebrow("21 Temmuz 2020 · ABD Adalet Bakanlığı iddianamesi", 210)
-    s += emb("counter", 128, 270, 600, 240, PAL, to=10, size=220, fg=CREAM, suf="+")
-    s += f'<p data-build-in="fade 1 auto" style="position:absolute;left:128px;top:510px;width:900px;font-family:{DISPLAY};font-size:44px;font-weight:700;color:{T1}">yıl süren bir kampanya iddiası</p>'
-    s += f'<p data-build-in="fade 2 auto" style="position:absolute;left:128px;top:590px;width:1000px;font-size:30px;line-height:1.45;color:{SKY}">İki kişi, yüksek teknoloji ve ilaç dahil pek çok sektörü hedef almakla suçlandı. İddianameye göre 2020’de COVID-19 aşı, tedavi ve test araştırması yapan kuruluşların ağlarında açık aradılar.</p>'
-    s += emb("radar", 1260, 250, 520, 520, PAL)
-    s += src("Kaynak: ABD Adalet Bakanlığı basın açıklaması, 21 Temmuz 2020; NPR, 21 Temmuz 2020. Suçlama, mahkûmiyet değildir.", top=880, dark=True)
-    return s
-
-
-# 12 ── insider: Nationwide Children's
-stats = [("5+", "exozom araştırmasına ait ticari sır", V2), ("10", "yıl yetkili erişim (2008–2018)", T3), ("30", "ay hapis cezası (1 Şubat 2021)", P2)]
+# 8 ── four cases, one glance (shortened)
+TXC = {P2: PT, AMBER: AMBERT, T3: TT, T2: TT}
+CASES = [("c-ucsf", "UCSF · 2020", "Fidye", "Tıp fakültesi sunucuları şifrelendi; veriye dönmek için yaklaşık 1,14 milyon dolar ödendi.", "Çevrimdışı ve denenmiş yedek.", P2),
+         ("c-ema", "EMA · 2020", "Değiştirilen belge", "Aşı başvurusu belgeleri çalındı; bir kısmı değiştirilerek internette yayımlandı.", "İmzalı, sürümlü kayıt.", T3),
+         ("c-ohio", "Ohio · 2008–2018", "İçeriden hırsızlık", "Bir hastane araştırmacısı exozom araştırmasına ait ticari sırları çaldı; 30 ay hapis.", "Ayrılışta erişim aynı gün kapanır.", V2),
+         ("c-illu", "Illumina · 2023", "Cihaz açığı", "Dizileme cihazlarının kontrol yazılımında 10 üzerinden 10 önem puanlı açık.", "Cihaz bilgisayarı da yamalanır.", AMBER)]
 body = ""
-for k, (v, t, c) in enumerate(stats):
-    body += (f'<div data-build-in="rise {k + 1} auto" style="position:absolute;left:128px;top:{310 + k * 176}px;width:640px;height:152px;{card_style(c, pad="0px 32px", top_border=False, extra=f"border-left:8px solid {c};")}flex-direction:row;gap:28px;align-items:center">'
-             f'<p style="width:170px;font-family:{DISPLAY};font-size:84px;font-weight:800;letter-spacing:-3px;color:{c if c != P2 else PT}">{v}</p>'
-             f'<p style="flex:1;font-size:28px;line-height:1.3;color:{TEXT}">{t}</p></div>')
-body += (f'<div data-build-in="fade 4 auto" style="position:absolute;left:840px;top:310px;width:952px;display:flex;flex-direction:column;gap:20px">'
-         + P("Nationwide Children’s Hospital Araştırma Enstitüsü’nde çalışan bir araştırmacı, eşiyle birlikte exozom araştırmalarına ait en az beş ticari sırrı çaldı.", 30, TEXT, lh=1.42)
-         + P("Birini, Çin’de kurduğu şirket üzerinden exozom izolasyon kiti üretip satmak için kullandı. 2,6 milyon dolar tazminat ödemeye mahkûm edildi.", 30, BODY2, lh=1.42)
-         + "</div>")
-body += callout(836, "Erişim ayrılırken de yönetilir: ayrılan kişinin hesabı, paylaşılan klasörü ve kişisel bulut kopyası aynı gün kapanır.", label="Ders", icon="UserX", build="rise 5 auto")
-content(D, "insider", "İçeriden hırsızlık · Ohio, ABD", "Kapıyı kırmaya gerek yoktu", body, ill="eye",
-        notes="""Dördüncü vaka içeriden. Nationwide Children's Hospital'ın araştırma enstitüsü, Ohio.
-Li Chen 2008–2018 arasında orada çalıştı; eşi Yu Zhou da aynı laboratuvar ortamındaydı. Birlikte exozom araştırmasına ait en az beş ticari sırrı çaldılar; birini Çin'de kurdukları şirkette exozom izolasyon kiti üretip satmak için kullandılar.
-1 Şubat 2021'de Chen 30 ay hapis cezası aldı; 2,6 milyon dolar tazminat ve yaklaşık 1,45 milyon dolar müsadere.
-Ders: içeriden tehdit bir teknoloji sorunu kadar bir süreç sorunu. Kim neye erişiyor, ayrılırken ne oluyor?
-Kaynak: ABD Ohio Güney Bölgesi Savcılığı, 1 Şubat 2021.""")
+for k, (cid, when, t, d_, lesson, c) in enumerate(CASES):
+    x = 128 + k * 422
+    body += (f'<div id="{cid}" data-build-in="rise {k + 1} auto" style="position:absolute;left:{x}px;top:300px;width:398px;height:470px;{card_style(c, pad="30px 30px", gap=14)}">'
+             f'<p style="font-family:{MONO};font-size:24px;font-weight:600;color:{TXC.get(c, c)}">{when}</p>' + H(t, 32)
+             + P(d_, 25, BODY2, lh=1.38) + '<div style="flex:1"></div>'
+             + f'<div style="display:flex;flex-direction:row;gap:12px;align-items:center;padding-top:14px;border-top:2px solid {LINE}">'
+             + f'<x-icon name="Verified" style="width:32px;height:32px;color:{TXC.get(c, c)}"></x-icon><p style="flex:1;font-size:24px;font-weight:600;line-height:1.3;color:{TEXT}">{lesson}</p></div></div>')
+body += src("Kaynaklar: UCSF açıklaması, 26 Haziran 2020 · EMA açıklamaları, 9 Aralık 2020 ve 15 Ocak 2021 · ABD Ohio Güney Bölgesi Savcılığı, 1 Şubat 2021 · CISA ICSMA-23-117-01, 27 Nisan 2023.", top=830)
+content(D, "cases", "Vakalar · kısa", "Dört vaka, dört ders", body, ill="layers",
+        notes="""Vakaları kısa geçiyoruz; hepsi yurt dışından ama dersleri bizim laboratuvarlarımız için de geçerli. Kartlar tıkladıkça açılıyor; her birinde yalnız alttaki dersi vurgulayın.
+UCSF, Haziran 2020: fidye yazılımı tıp fakültesi sunucularını şifreledi; üniversite yaklaşık 1,14 milyon dolar ödediğini açıkladı. Ders: çevrimdışı ve denenmiş yedek.
+EMA, Aralık 2020: Avrupa İlaç Ajansı'ndan aşı başvurusu belgeleri çalındı; Ocak 2021'de EMA, bazı yazışmaların yayımlanmadan önce değiştirildiğini açıkladı. Ders: bütünlük; hangi sürümün gerçek olduğunu kanıtlayabilmek.
+Ohio: Nationwide Children's Hospital araştırma enstitüsünde 2008–2018 arasında çalışan bir araştırmacı exozom araştırmasına ait ticari sırları çaldı; 1 Şubat 2021'de 30 ay hapis cezası aldı. Ders: ayrılış süreci.
+Illumina, Nisan 2023: CISA, dizileme cihazlarının kontrol yazılımında önem puanı 10 olan bir açık duyurdu. Ders: cihaz bilgisayarı da bir sunucudur.
+Bir sonraki slaytta bu dört vakayı üç değere yerleştireceğiz.""")
 
-# 13 ── Illumina
-items = [
-    f'<p style="font-family:{DISPLAY};font-size:96px;font-weight:800;letter-spacing:-3px;line-height:1;color:{PT}">10,0</p>' + H("CVSS önem puanı", 30) + P("CVE-2023-1968: kimlik doğrulaması olmadan, ağ üzerinden erişilebilen hizmet.", 26, BODY2, lh=1.38),
-    icon("Dna", 52, V2) + H("Etkilenen cihazlar", 30) + P("iSeq 100, MiniSeq, MiSeq, NextSeq ve NovaSeq kontrol yazılımlarının belirli sürümleri.", 26, BODY2, lh=1.38),
-    icon("TriangleAlert", 52, AMBERT) + H("Olası etki", 30) + P("Uzaktan kod çalıştırma; ayar ve yazılım değiştirme; hassas veriye erişim.", 26, BODY2, lh=1.38),
-]
-content(D, "illumina", "Nisan 2023 · CISA uyarısı ICSMA-23-117-01", "Cihazın kendisi bir kapı olabilir",
-        cards_row(items, top=320, height=390, accents=[P2, V2, AMBER], pad="34px 36px")
-        + callout(750, "Dizileme cihazının bilgisayarı bir sunucu gibi ele alınır: envanterde yer alır, yamalanır, ayrı bir ağ bölümünde çalışır.", build="rise 4 auto")
-        + src("Kaynak: CISA, ICS Medical Advisory ICSMA-23-117-01, “Illumina Universal Copy Service”, 27 Nisan 2023.", top=900),
-        ill="scan",
-        notes="""Beşinci vaka bir saldırı değil, bir açık. Nisan 2023'te ABD CISA, Illumina'nın Universal Copy Service yazılımında iki açık duyurdu.
-CVE-2023-1968'in önem puanı 10 üzerinden 10. Kimlik doğrulaması gerekmeden, ağ üzerinden kod çalıştırılabiliyor, ayarlar ve yazılım değiştirilebiliyor, veriye erişilebiliyor.
-Etkilenenler iSeq, MiniSeq, MiSeq, NextSeq ve NovaSeq kontrol yazılımlarının belirli sürümleri. Bunlar pek çok üniversitenin çekirdek tesisinde olan cihazlar.
-Ders: cihaz bilgisayarı bir laboratuvar aleti değil, ağdaki bir sunucu. Üretici yamalarını takip etmek kimin görevi? Salona sorun.""")
-
-
-# 14 ── DNA synthesis integrity
-@dark("dna", """Bir adım öteye gidelim: biyolojide siber saldırı yalnız veri çalmak değil, maddeyi değiştirmek de olabilir.
-Ben-Gurion Üniversitesi'nden Puzis ve arkadaşları 2020'de Nature Biotechnology'de bir senaryo gösterdi: bir biyoloğun bilgisayarındaki zararlı yazılım, DNA sentez siparişindeki diziyi fark ettirmeden değiştirebilir; dizi tarama protokollerinin boşluklarından geçecek şekilde gizlenebilir.
-Bu bir laboratuvar deneyiydi, gerçek bir saldırı değil. Ama soru gerçek: siparişinizdeki dizinin, tasarladığınız dizi olduğunu nasıl doğruluyorsunuz?""", glow=(T3, V2))
-def _(i, n):
-    s = eyebrow("Bütünlük · DNA sentezi", 210)
-    s += f'<h2 data-build-in="rise 2 auto" style="position:absolute;left:128px;top:270px;width:1060px;font-family:{DISPLAY};font-size:76px;font-weight:800;letter-spacing:-2px;line-height:1.08;color:{CREAM}">Tehdit yalnız çalmak değil, <span style="color:{T2}">değiştirmek.</span></h2>'
-    s += f'<p data-build-in="fade 3 auto" style="position:absolute;left:128px;top:560px;width:1000px;font-size:31px;line-height:1.45;color:{SKY}">Puzis ve ark. (2020): bir bilgisayardaki zararlı yazılımın, sentez siparişindeki DNA dizisini fark ettirmeden değiştirebileceğini ve tarama boşluklarından geçirebileceğini gösterdi.</p>'
-    s += (f'<div data-build-in="rise 4 auto" style="position:absolute;left:128px;top:760px;width:1000px;display:flex;flex-direction:row;gap:18px;align-items:center">'
-          f'<x-icon name="ShieldCheck" style="width:44px;height:44px;color:{AMBER}"></x-icon><p style="flex:1;font-size:28px;line-height:1.38;color:{CREAM}">Savunma: siparişten önce ve teslimden sonra diziyi bağımsız olarak doğrulamak.</p></div>')
-    s += emb("helix", 1270, 160, 520, 700, PAL, vert=True, n=14, r=6)
-    s += src("Kaynak: Puzis R ve ark. Nat Biotechnol. 2020;38(12):1379–1381. doi:10.1038/s41587-020-00761-y", top=880, dark=True)
-    return s
-
-
-# 15–16 ── six cases → CIA triad (magic move)
-CHIPS = [("c-apt", "APT29 · aşı araştırması", V2), ("c-ohio", "Ohio · ticari sır", V2), ("c-ema", "EMA · değiştirilen belge", T3),
-         ("c-dna", "DNA sentezi · sipariş", T3), ("c-ucsf", "UCSF · fidye", P2), ("c-illu", "Illumina · cihaz açığı", AMBER)]
+# 9 ── CIA triad (magic move from the four cards)
 
 
 def chip(cid, text, c, x, y, w):
@@ -214,15 +123,9 @@ def chip(cid, text, c, x, y, w):
             f'<p style="font-family:{DISPLAY};font-size:28px;font-weight:700;letter-spacing:-0.5px;color:{INK}">{text}</p></div>')
 
 
-body = ""
-for k, (cid, t, c) in enumerate(CHIPS):
-    body += chip(cid, t, c, 128 + (k % 3) * 564, 360 + (k // 3) * 130, 536)
-body += f'<p data-build-in="fade 1 auto" style="position:absolute;left:128px;top:680px;width:1500px;font-size:32px;line-height:1.4;color:{BODY2}">Altı örnek, farklı ülkeler ve farklı yıllar. Yine de üç başlıkta toplanıyorlar.</p>'
-content(D, "cases", "Ara toplam", "Altı örnek, tek tabloda", body, ill="layers",
-        notes="""Ara toplam. Anlattığımız altı örnek ekranda. Farklı ülkeler, farklı yıllar, farklı aktörler.
-Tıklayın: bir sonraki slaytta bu kartlar kendiliğinden üç sütuna taşınacak.""")
-
-COLS = [("Gizlilik", "Bilgi yetkisiz kişilere geçti", V2, ["c-apt", "c-ohio"]), ("Bütünlük", "Bilgi fark ettirmeden değişti", T3, ["c-ema", "c-dna"]),
+CH = {"c-apt": ("APT29 · aşı araştırması", V2), "c-ohio": ("Ohio · ticari sır", V2), "c-ema": ("EMA · değiştirilen belge", T3),
+      "c-ucsf": ("UCSF · fidye", P2), "c-illu": ("Illumina · cihaz açığı", AMBER)}
+COLS = [("Gizlilik", "Bilgi yetkisiz kişilere geçti", V2, ["c-apt", "c-ohio"]), ("Bütünlük", "Bilgi fark ettirmeden değişti", T3, ["c-ema"]),
         ("Erişilebilirlik", "Bilgiye ulaşılamadı", P2, ["c-ucsf"])]
 body = ""
 for k, (t, sub, c, ids) in enumerate(COLS):
@@ -230,17 +133,15 @@ for k, (t, sub, c, ids) in enumerate(COLS):
     body += (f'<div data-build-in="fade 1 auto" style="position:absolute;left:{x}px;top:300px;width:536px;display:flex;flex-direction:column;gap:8px">'
              f'<p style="font-family:{DISPLAY};font-size:44px;font-weight:800;letter-spacing:-1px;color:{c if c != P2 else PT}">{t}</p><p style="font-size:26px;color:{BODY2}">{sub}</p></div>')
     for j, cid in enumerate(ids):
-        tx = dict((a, (b, cc)) for a, b, cc in CHIPS)[cid]
-        body += chip(cid, tx[0], tx[1], x, 430 + j * 120, 536)
-tx = dict((a, (b, cc)) for a, b, cc in CHIPS)["c-illu"]
-body += chip("c-illu", tx[0], tx[1], 1256, 550, 536)
+        body += chip(cid, CH[cid][0], CH[cid][1], x, 430 + j * 120, 536)
+body += chip("c-illu", CH["c-illu"][0], CH["c-illu"][1], 1256, 550, 536)
 body += f'<p data-build-in="fade 2 auto" style="position:absolute;left:1256px;top:666px;width:536px;font-size:26px;line-height:1.38;color:{AMBERT};font-weight:600">Yamasız cihaz üçünü birden tehdit eder.</p>'
-body += callout(760, "Gizlilik, bütünlük, erişilebilirlik: laboratuvar verisinin üç değeri. Her kontrolü, hangisini koruduğunu sorarak seçin.", label="Çerçeve", icon="Triangle", build="rise 3 auto")
-content(D, "triad", "Ara toplam", "Altı örnek, üç değer", body, ill="layers", transition="magic",
-        notes="""Kartlar yerine oturdu: bilgi güvenliğinin üç temel değeri.
-Gizlilik: APT29 ve Ohio vakası, bilgi yanlış ellere geçti. Bütünlük: EMA ve DNA sentezi, bilgi değişti. Erişilebilirlik: UCSF, bilgiye ulaşılamadı.
-Illumina açığı ise üçünü birden tehdit ediyor; bu yüzden cihaz bilgisayarlarına ayrıca odaklanacağız.
-Laboratuvar diliyle: veri sızmasın, değişmesin, kaybolmasın.""")
+body += callout(760, "Gizlilik, bütünlük, erişilebilirlik: laboratuvar verisinin üç değeri. Her kontrolü, hangisini koruduğunu sorarak seçin.", label="Çerçeve", icon="Activity", build="rise 3 auto")
+content(D, "triad", "Ara toplam", "Beş örnek, üç değer", body, ill="layers", transition="magic",
+        notes="""Kartlar yerine oturdu: bilgi güvenliğinin üç temel değeri. Açılıştaki APT29 da burada.
+Gizlilik: APT29 ve Ohio, bilgi yanlış ellere geçti. Bütünlük: EMA, bilgi değişti. Erişilebilirlik: UCSF, bilgiye ulaşılamadı. Illumina açığı üçünü birden tehdit ediyor.
+Laboratuvar diliyle: veri sızmasın, değişmesin, kaybolmasın.
+Şimdi asıl soruya geçiyoruz: saldırgan içeri nasıl giriyor? Cevabın çoğu zaman bir insan olduğunu göreceğiz.""")
 
 # 17 ── kinetic: anatomy
 kinetic(D, "k-chain", "Bir hırsızlığın anatomisi", [("KEŞİF.", None), ("GİRİŞ.", T2), ("YAYILMA.", None), ("SIZMA.", P2)],
@@ -265,7 +166,170 @@ body += f'<p data-build-in="fade 11 auto" style="position:absolute;left:128px;to
 content(D, "chain", "Saldırı zinciri", "Beş halka, beş kırılma noktası", body, ill="chain",
         notes="""Beş halka, soldan sağa. Önce aşamalar gelir, sonra her birinin altındaki savunma.
 Keşif: saldırgan web sitenizi, yayınlarınızı, personel listenizi okur. İlk erişim: çoğu zaman bir oltalama e-postası ya da çalınmış bir parola. Yerleşme: kalıcı bir hesap ya da uzaktan erişim aracı. Yayılma: paylaşılan sürücüler, cihaz bilgisayarları. Sızma: veri dışarı çıkar ya da şifrelenir.
-Son cümle önemli: erken bir halkayı kırmak yeter. Bu akşam kurumsal hesabınızda MFA'yı açmak, tam olarak ikinci halkayı kırmak demek.""")
+Son cümle önemli: erken bir halkayı kırmak yeter. İkinci halka, ilk erişim, çoğu zaman bir insandan geçer; şimdi ona bakıyoruz.""")
+
+
+# ═══ Sosyal mühendislik bölümü ═══
+# SE-1 kinetic
+kinetic(D, "k-social", "Sosyal mühendislik", [("TIKLA.", None), ("ONAYLA.", T2), ("SÖYLE.", None), ("GÖNDER.", P2)],
+        """Kinetik ara slayt. Saldırı zincirinin ikinci halkası, ilk erişim, çoğu zaman bir yazılım açığından değil bir insandan geçer.
+Dört fiil: bir bağlantıya tıkla, bir bildirimi onayla, bir kodu söyle, bir dosyayı gönder. Sosyal mühendislik bu dört fiilden birini yaptırma sanatıdır.
+Salona sorun: son bir ayda şüpheli bir e-posta, SMS ya da WhatsApp mesajı alan elini kaldırsın. Genellikle salonun çoğu kaldırır.""", size=160)
+
+
+# SE-2 numbers
+@dark("se-stat", """İki sayı. Verizon'un her yıl yayımladığı Veri İhlali Soruşturmaları Raporu'nun 2025 baskısına göre ihlallerin yaklaşık yüzde 60'ında insan unsuru var: biri tıklıyor, biri onaylıyor, biri yanlış kişiye gönderiyor ya da kandırılıyor.
+FBI'ın İnternet Suçları Şikâyet Merkezi'nin 2024 raporuna göre yalnız iş e-postası dolandırıcılığından, yani yönetici ya da tedarikçi taklidiyle ödeme yaptırmaktan bildirilen kayıp yaklaşık 2,8 milyar dolar.
+Mesaj: en pahalı açık, bir insanın iyi niyeti. Bu yüzden savunmanın da bir kısmı insanda.""", glow=(P2, V2))
+def _(i, n):
+    s = eyebrow("Sosyal mühendislik · neden önemli?", 200)
+    s += emb("counter", 128, 260, 640, 240, PAL, to=60, size=220, fg=CREAM, pre="~%")
+    s += f'<p data-build-in="fade 1 auto" style="position:absolute;left:128px;top:500px;width:740px;font-family:{DISPLAY};font-size:40px;font-weight:700;line-height:1.15;color:{P1}">ihlalde insan unsuru var</p>'
+    s += f'<p data-build-in="fade 2 auto" style="position:absolute;left:128px;top:610px;width:740px;font-size:28px;line-height:1.42;color:{SKY}">Biri tıklıyor, biri onaylıyor, biri yanlış kişiye gönderiyor ya da kandırılıyor.</p>'
+    s += (f'<div data-build-in="rise 3 auto" style="position:absolute;left:1000px;top:290px;width:792px;display:flex;flex-direction:column;gap:16px;padding:40px 44px;background:{INK2};border-radius:22px;border-top:6px solid {AMBER}">'
+          f'<p style="font-family:{MONO};font-size:24px;letter-spacing:2px;font-weight:600;color:{AMBER}">İŞ E-POSTASI DOLANDIRICILIĞI · 2024</p>'
+          f'<p style="font-family:{DISPLAY};font-size:96px;font-weight:800;letter-spacing:-3px;line-height:1;color:{CREAM}">2,8 <span style="font-size:48px;color:{AMBER}">milyar $</span></p>'
+          + P("Yönetici ya da tedarikçi taklidiyle yaptırılan ödemelerden FBI’a bildirilen kayıp.", 28, SKY, lh=1.4) + "</div>")
+    s += src("Kaynaklar: Verizon, 2025 Data Breach Investigations Report (Nisan 2025) · FBI IC3, 2024 Internet Crime Report (Nisan 2025).", top=880, dark=True)
+    return s
+
+
+# SE-3 levers
+LV = [("Warning", "Aciliyet", "“24 saat içinde doğrulamazsanız hesabınız kapatılacak.”", P2),
+      ("GraduationCap", "Otorite", "“Rektörlük adına yazıyorum, toplantıdayım.”", V2),
+      ("Lock", "Korku", "“Hesabınızdan şüpheli giriş tespit edildi.”", AMBER),
+      ("Search", "Merak", "“2026_maas_tablosu.xlsx ektedir.”", T3),
+      ("Users", "Yardımseverlik", "“Hocam acil bir işim var, müsait misiniz?”", V1),
+      ("Trust", "Tanıdıklık", "Bildik bir logo, bir meslektaşın adı, bir kongre.", T2)]
+items = [f'<div style="display:flex;flex-direction:row;gap:16px;align-items:center">{icon(ic, 40, TXC.get(c, c))}{H(t, 32, lh=1.15, extra="flex:1;")}</div>'
+         + P(q, 27, BODY2, lh=1.38, extra="font-style:italic;") for ic, t, q, c in LV]
+content(D, "se-levers", "Sosyal mühendislik · psikoloji", "Altı psikolojik kaldıraç",
+        cards_row(items, top=320, n=3, height=200, row_gap=22, gap=22, accents=[c for *_, c in LV], pad="26px 30px", kind="pop")
+        + callout(780, "Bir mesaj sizi acele ettiriyorsa, durmak için en iyi andır.", label="Kural", icon="Clock", build="rise 8 auto"),
+        ill="phish",
+        notes="""Sosyal mühendislik teknik değil, psikolojik bir saldırı. Altı kaldıraç kullanır; kartlar tıkladıkça açılıyor.
+Aciliyet: düşünme süresini elinizden alır. Otorite: itiraz etmeyi zorlaştırır; "Rektörlük adına", "Dekan Bey toplantıda". Korku: hesabınız, maaşınız, itibarınız. Merak: maaş tablosu, sınav sonuçları, "sizin hakkınızda bir şikâyet". Yardımseverlik: akademide çok güçlü; meslektaşa yardım etmek refleks. Tanıdıklık: bildik logo, bildik ad.
+Tek kural: bir mesaj sizi acele ettiriyorsa, durmak için en iyi an odur. Salona sorun: size en çok hangisi işler?""")
+
+# SE-4 channels
+CHN = [("PaperPlane", "E-posta", "Sahte BT duyurusu, kargo, fatura, paylaşılan belge bildirimi.", V2),
+       ("Chat", "SMS ve WhatsApp", "Kargo, banka ya da kurum taklidi; yöneticiden “acil” mesaj.", P2),
+       ("Users", "Telefon", "“Bilgi işlemden arıyorum, telefonunuza gelen kodu okur musunuz?”", AMBER),
+       ("Key", "MFA yorgunluğu", "Gece arka arkaya gelen giriş onayları; bıkıp “onayla”ya basılması beklenir.", T3),
+       ("Search", "QR kod", "Afiş ya da e-postadaki karekod sizi sahte giriş sayfasına götürür.", V1),
+       ("Home", "Fiziksel", "Kapıda arkanızdan giren “servis elemanı”, koridorda bulunan USB bellek.", T2)]
+items = [f'<div style="display:flex;flex-direction:row;gap:16px;align-items:center">{icon(ic, 40, TXC.get(c, c))}{H(t, 30, lh=1.15, extra="flex:1;")}</div>'
+         + P(d_, 25, BODY2, lh=1.38) for ic, t, d_, c in CHN]
+content(D, "se-channels", "Sosyal mühendislik · kanallar", "Yalnız e-posta değil",
+        cards_row(items, top=320, n=3, height=210, row_gap=22, gap=22, accents=[c for *_, c in CHN], pad="26px 30px", kind="pop")
+        + callout(790, "Kanal değişir, istek aynıdır: bir parola, bir kod, bir onay, bir ödeme ya da bir dosya.", label="Ortak nokta", icon="Lightbulb", build="rise 8 auto"),
+        ill="network",
+        notes="""Altı kanal. E-posta hâlâ en yaygını ama tek değil.
+SMS ve WhatsApp: kargo, banka ya da kurum taklidi; bir yöneticinin adıyla gelen "acil" mesaj. Telefon: sesli dolandırıcılık; "bilgi işlemden arıyorum" ya da "cihaz servisinden arıyorum".
+MFA yorgunluğu: parolanızı ele geçiren saldırgan gece arka arkaya giriş onayı gönderir, birinde "onayla"ya basmanızı bekler. Beklemediğiniz bir onayı asla onaylamayın.
+QR kod: e-posta filtrelerini atlattığı için giderek yaygın. Fiziksel: kapıda arkanızdan giren biri, koridorda "bulunan" bir USB bellek.
+Ortak nokta: istenen şey hep aynı beş şeyden biri.""")
+
+
+# SE-5 spot the phish: e-mail
+def flag(k, x, y, w, t, sub, c=P2):
+    return (f'<div data-build-in="pop {k + 1} auto" style="position:absolute;left:{x}px;top:{y}px;width:{w}px;display:flex;flex-direction:row;gap:18px;align-items:center">'
+            f'<p style="width:52px;height:52px;border-radius:26px;background:{c};color:#FFFFFF;font-family:{DISPLAY};font-size:26px;font-weight:800;text-align:center;line-height:52px">{k + 1}</p>'
+            f'<div style="flex:1;display:flex;flex-direction:column;gap:2px"><p style="font-size:27px;font-weight:700;color:{TEXT}">{t}</p><p style="font-size:24px;line-height:1.3;color:{BODY2}">{sub}</p></div></div>')
+
+
+def pin_dot(k, x, y):
+    return f'<p data-build-in="pop {k + 1} auto" style="position:absolute;left:{x}px;top:{y}px;width:44px;height:44px;border-radius:22px;background:{P2};color:#FFFFFF;font-family:{DISPLAY};font-size:24px;font-weight:800;text-align:center;line-height:44px">{k + 1}</p>'
+
+
+mail = (f'<div style="position:absolute;left:128px;top:290px;width:960px;height:600px;display:flex;flex-direction:column;background:{WHITE};border-radius:22px;box-shadow:0 18px 50px rgba(29,37,84,0.14);overflow:hidden">'
+        f'<div style="display:flex;flex-direction:row;gap:12px;align-items:center;padding:18px 28px;background:{PAPER2}">'
+        + "".join(f'<div style="width:16px;height:16px;border-radius:8px;background:{c}"></div>' for c in (P1, AMBER, T2))
+        + f'<p style="flex:1;font-family:{MONO};font-size:24px;color:{MUTE};text-align:center">Gelen kutusu</p></div>'
+        f'<div style="display:flex;flex-direction:column;gap:10px;padding:26px 36px;border-bottom:2px solid {LINE}">'
+        f'<p style="font-size:26px;color:{TEXT}"><b>Bilgi İşlem Daire Başkanlığı</b> <span style="color:{MUTE}">&lt;destek@posta-guvenlik.net&gt;</span></p>'
+        f'<p style="font-family:{DISPLAY};font-size:32px;font-weight:700;color:{INK}">[ACİL] E-posta hesabınız 24 saat içinde kapatılacak</p></div>'
+        f'<div style="display:flex;flex-direction:column;gap:20px;padding:28px 36px">'
+        f'<p style="font-size:26px;line-height:1.45;color:{TEXT}">Sayın kullanıcı,</p>'
+        f'<p style="font-size:26px;line-height:1.45;color:{TEXT}">Posta kutunuz kapasite sınırını aştı. Hesabınızın kapatılmaması için 24 saat içinde kullanıcı adı ve şifrenizle doğrulama yapınız.</p>'
+        f'<p style="width:330px;padding:16px 26px;border-radius:12px;background:{V2};color:#FFFFFF;font-size:26px;font-weight:700;text-align:center">Hesabımı doğrula</p>'
+        f'<p style="font-family:{MONO};font-size:24px;color:{MUTE}">hesap-dogrula.posta-guvenlik.net/giris</p></div></div>')
+body = mail
+FL = [("Gönderen adresi", "Ad kurum adı, adres kurumun alan adı değil."), ("Aciliyet ve tehdit", "“24 saat içinde”, “kapatılacak”."),
+      ("Adınız yok", "“Sayın kullanıcı”: toplu gönderim."), ("Şifre isteniyor", "Bilgi işlem şifrenizi e-postayla istemez."),
+      ("Bağlantı başka yere gidiyor", "Üzerine gelin, tıklamayın: adres kurumunuz değil.")]
+for k, (t, sub) in enumerate(FL):
+    body += flag(k, 1140, 296 + k * 118, 652, t, sub)
+for k, (x, y) in enumerate([(1050, 360), (1050, 420), (1050, 520), (1050, 600), (1050, 790)]):
+    body += pin_dot(k, x, y)
+content(D, "se-mail", "Gerçek mi, oltalama mı? · 1", "Beş işaret, tek e-posta", body, ill=None,
+        notes="""Etkileşimli slayt. Önce yalnız e-postayı gösterin ve salona sorun: bu e-postada kaç uyarı işareti var? Birkaç cevap alın, sonra tıklayarak işaretleri tek tek açın.
+Bir: gönderenin adı kurumsal, adresi değil. İki: aciliyet ve tehdit, 24 saat, kapatılacak. Üç: adınız yok, "Sayın kullanıcı". Dört: şifre isteniyor; bilgi işlem şifrenizi asla e-postayla istemez. Beş: bağlantının gittiği adres kurumunuz değil; fareyle üzerine gelip adresi okuyun, tıklamayın.
+Bu e-posta ve adresleri eğitim için uydurulmuştur.""")
+
+
+# SE-6 spot the phish: chat + call + MFA (dark)
+@dark("se-chat", """İkinci örnek: e-posta dışındaki kanallar. Üç sahne, üç kurgusal örnek.
+Sol: tanımadığınız bir numaradan, profil fotoğrafı ve adıyla bir yöneticiniz gibi görünen WhatsApp mesajı. Önce "müsait misiniz", sonra acil bir ödeme ya da hediye kartı. Bu, iş e-postası dolandırıcılığının mesajlaşma sürümü. Doğrulama: yöneticinizi bildiğiniz numaradan arayın.
+Orta: cihaz servisinden aradığını söyleyen biri, telefonunuza gelen doğrulama kodunu istiyor. O kod, birinin şu anda sizin hesabınıza girmeye çalıştığının kanıtıdır. Kod kimseyle paylaşılmaz.
+Sağ: gece 02:14'ten itibaren arka arkaya gelen giriş onayları. Siz giriş yapmıyorsanız, biri parolanızı biliyor demektir. Reddedin, parolanızı değiştirin, bilgi işleme bildirin.""", glow=(P2, T2))
+def _(i, n):
+    s = eyebrow("Gerçek mi, oltalama mı? · 2", 190)
+    s += f'<h2 data-build-in="rise 1 auto" style="position:absolute;left:128px;top:236px;width:1600px;font-family:{DISPLAY};font-size:60px;font-weight:800;letter-spacing:-1.5px;line-height:1.05;color:{CREAM}">Üç kanal, aynı oyun</h2>'
+
+    def panel(x, title, c, inner, k):
+        return (f'<div data-build-in="rise {k} auto" style="position:absolute;left:{x}px;top:340px;width:530px;height:560px;display:flex;flex-direction:column;gap:16px;padding:28px 28px;background:{INK2};border-radius:24px;border-top:6px solid {c}">'
+                f'<p style="font-family:{MONO};font-size:24px;letter-spacing:2px;font-weight:600;color:{c}">{tr_upper(title)}</p>{inner}</div>')
+
+    def bubble(t, mine=False):
+        bg, fg = (T3, "#FFFFFF") if mine else ("#F2F4FF", INK)
+        al = "flex-end" if mine else "flex-start"
+        return f'<p style="align-self:{al};width:400px;padding:14px 18px;border-radius:18px;background:{bg};color:{fg};font-size:24px;line-height:1.32">{t}</p>'
+
+    wa = (f'<div style="display:flex;flex-direction:row;gap:14px;align-items:center"><div style="width:52px;height:52px;border-radius:26px;background:{V1}"></div>'
+          f'<div style="display:flex;flex-direction:column"><p style="font-size:26px;font-weight:700;color:{CREAM}">Bölüm Başkanı</p><p style="font-size:24px;color:{SKY}">+90 5•• ••• •• •• · kayıtlı değil</p></div></div>'
+          + bubble("Merhaba hocam, toplantıdayım, konuşamıyorum. Müsait misiniz?")
+          + bubble("Bugün yetişmesi gereken bir ödeme var. 5 adet hediye kartı alıp kodlarını buraya yazar mısınız? Yarın öderim."))
+    call = (f'<div style="display:flex;flex-direction:column;align-items:center;gap:10px;padding:14px 0px">'
+            f'<div style="width:96px;height:96px;border-radius:48px;background:{AMBER}"></div>'
+            f'<p style="font-size:30px;font-weight:700;color:{CREAM}">Gelen arama</p><p style="font-size:24px;color:{SKY}">“Cihaz servisinden arıyorum”</p></div>'
+            + bubble("Uzaktan bağlanmam için telefonunuza gelen 6 haneli kodu okur musunuz? Bir dakikalık iş."))
+    mfa = "".join(f'<div style="display:flex;flex-direction:row;gap:14px;align-items:center;padding:14px 18px;border-radius:16px;background:#F2F4FF">'
+                  f'<x-icon name="Key" style="width:32px;height:32px;color:{V2}"></x-icon><p style="flex:1;font-size:24px;color:{INK}"><b>02:{14 + j:02d}</b> Girişi onaylıyor musunuz?</p></div>' for j in range(4))
+    s += panel(128, "WhatsApp", P1, wa, 2) + panel(695, "Telefon", AMBER, call, 3) + panel(1262, "MFA bildirimi", T2, mfa, 4)
+    s += src("Mesajlar eğitim amaçlı kurgudur. Doğrulama her zaman ikinci, bildiğiniz bir kanaldan yapılır.", top=930, dark=True)
+    return s
+
+
+# SE-7 academia-specific bait
+AC = [("Book", "Sahte dergi ve kongre", "Davet, hızlı yayın, “makale yükleme” sayfasında kurum şifresi.", V2),
+      ("Star", "Hakem ve editör daveti", "Tanınmış bir dergi adıyla gelen bağlantı, sahte giriş sayfasına gider.", P2),
+      ("Users", "“Ortak çalışalım”", "İlgili görünen bir araştırmacı yayımlanmamış veriyi, protokolü, numuneyi ister.", AMBER),
+      ("Globe", "Profesyonel ağlar", "Sahte profil önce sohbet eder, sonra danışmanlık ya da gezi teklif eder.", T3)]
+items = [icon(ic, 46, TXC.get(c, c)) + H(t, 30, lh=1.18) + P(d_, 25, BODY2, lh=1.38) for ic, t, d_, c in AC]
+content(D, "se-academic", "Sosyal mühendislik · akademi", "Akademisyene özel yemler",
+        cards_row(items, top=320, height=360, accents=[c for *_, c in AC], pad="30px 30px")
+        + callout(720, "İngiltere’de MI5, bir yılda profesyonel ağlarda 10.000’i aşkın gizlenmiş yaklaşım gördüğünü açıkladı (CPNI, Mayıs 2022).", label="Ölçek", icon="Search", build="rise 5 auto"),
+        ill="eye",
+        notes="""Akademisyene özel yemler. Saldırgan bizim günlük işimizi bilir ve onu taklit eder.
+Sahte dergi ve kongre davetleri: çoğu yalnız para ister, bazıları "makale yükleme" sayfasında kurum şifrenizi ister. Hakem ve editör davetleri: tanınmış bir dergi adı, sahte bir giriş sayfası.
+"Ortak çalışalım": ilgili görünen bir araştırmacı, iş birliği bahanesiyle yayımlanmamış veri, protokol ya da numune ister. Bu, sabahki araştırma güvenliği konusuyla doğrudan bağlantılı.
+Profesyonel ağlar: İngiltere'nin altyapı güvenliği kurumu CPNI, 2022'de "Think Before You Link" kampanyasını duyururken MI5'ın bir yılda bu ağlarda 10.000'i aşkın gizlenmiş yaklaşım gördüğünü açıkladı. Sahte profil önce sohbet eder, sonra danışmanlık, rapor ya da gezi teklif eder.""")
+
+
+# SE-8 defence: stop · think · verify
+SD = [("01", "Dur", "Aciliyet, tehdit ya da beklenmedik bir istek: yavaşlama işaretidir.", P2),
+      ("02", "Doğrula", "Bildiğiniz numaradan arayın ya da kurum sayfasına kendiniz girin. Mesajdaki bağlantı ve numarayı kullanmayın.", V2),
+      ("03", "Paylaşma", "Parola, doğrulama kodu ve beklenmedik bir onay hiçbir kanaldan verilmez.", AMBER),
+      ("04", "Bildir", "Tıkladıysanız da bildirin. Erken bildirim zararı küçültür; bildiren suçlanmaz.", T3)]
+items = [numcard(a, t, d_, TXC.get(c, c)) for a, t, d_, c in SD]
+content(D, "se-defence", "Sosyal mühendislik · savunma", "Dur, doğrula, paylaşma, bildir",
+        cards_row(items, top=320, height=380, accents=[c for *_, c in SD], pad="30px 30px")
+        + callout(740, "Oltalamaya dayanıklı MFA, kandırılan bir anın bedelini küçültür: parola çalınsa da hesap açılmaz.", label="Teknik destek", icon="Key", build="rise 5 auto"),
+        ill="shield",
+        notes="""Savunma dört kelime. Dur: acele ettiren her mesaj yavaşlama işaretidir. Doğrula: bildiğiniz numarayı arayın, kurum sayfasına kendiniz girin; mesajdaki bağlantıyı ve numarayı kullanmayın. Paylaşma: parola, kod ve beklenmedik onay hiçbir kanaldan verilmez. Bildir: tıkladıysanız bile bildirin.
+Son nokta en önemlisi: bildiren suçlanmaz. Utandığı için susan kişi, saldırgana saatler kazandırır.
+Teknik destek de var: oltalamaya dayanıklı MFA, kandırıldığınız anda bile hesabınızı korur. Altı kontrolün ilki bu.""")
 
 
 # 19 ── exfil
@@ -368,12 +432,12 @@ Salona: bunlardan hangisi sizin laboratuvarınızda zaten var? El kaldırma ile 
 
 
 # 26 ── takeaways + bridge
-@dark("takeaways", """Üç çıkarım. Bir: üniversite laboratuvarları değerli olduğu için hedef; açıklık bir zayıflık değil ama yönetilmesi gereken bir risk. İki: vakaların çoğu aynı kapılardan giriyor: parola, yamasız cihaz, kapatılmamış hesap. Üç: erken halkayı kırmak yeter.
+@dark("takeaways", """Üç çıkarım. Bir: üniversite laboratuvarları değerli olduğu için hedef; açıklık bir zayıflık değil ama yönetilmesi gereken bir risk. İki: kapıların çoğu insandan geçiyor: bir tıklama, bir onay, bir kod. Üç: erken halkayı kırmak yeter.
 Günün akışı: 15:30'da Doç. Dr. Taşkıran ile araştırma güvenliği. Yarın 10:30'da Prof. Merey ile laboratuvar politikaları, SOP'ler ve bir olay müdahalesi masa başı tatbikatı.""", glow=(V2, P2))
 def _(i, n):
     s = eyebrow("Üç çıkarım", 210)
     TK = [("Değer hedef çeker.", "Açıklık bir zayıflık değil; yönetilmesi gereken bir risk.", T2),
-          ("Kapılar az, hep aynı.", "Parola, yamasız cihaz, kapatılmamış hesap.", P1),
+          ("Kapı çoğu zaman insandır.", "Dur, doğrula, paylaşma, bildir.", P1),
           ("Erken halkayı kırın.", "MFA, envanter ve yedek zincirin başında durur.", AMBER)]
     for k, (a, b, c) in enumerate(TK):
         s += (f'<div data-build-in="rise {k + 1} auto" style="position:absolute;left:128px;top:{280 + k * 150}px;width:1100px;display:flex;flex-direction:column;gap:8px">'
@@ -388,13 +452,12 @@ def _(i, n):
 # 27 ── references
 refs(D, "refs", [
     "Murch RS, So WK, Buchholz WG, Raman S, Peccoud J. Cyberbiosecurity: an emerging new discipline to help safeguard the bioeconomy. <i>Front Bioeng Biotechnol</i>. 2018;6:39. doi:10.3389/fbioe.2018.00039",
-    "Richardson LC, Connell ND, Lewis SM, Pauwels E, Murch RS. Cyberbiosecurity: a call for cooperation in a new threat landscape. <i>Front Bioeng Biotechnol</i>. 2019;7:99. doi:10.3389/fbioe.2019.00099",
-    "Millett K, dos Santos E, Millett PD. Cyber-biosecurity risk perceptions in the biotech sector. <i>Front Bioeng Biotechnol</i>. 2019;7:136. doi:10.3389/fbioe.2019.00136",
-    "Puzis R, Farbiash D, Brodt O, Elovici Y, Greenbaum D. Increased cyber-biosecurity for DNA synthesis. <i>Nat Biotechnol</i>. 2020;38(12):1379–1381. doi:10.1038/s41587-020-00761-y",
+    "Salahdine F, Kaabouch N. Social engineering attacks: a survey. <i>Future Internet</i>. 2019;11(4):89. doi:10.3390/fi11040089",
     "National Institute of Standards and Technology. The NIST Cybersecurity Framework (CSF) 2.0. NIST CSWP 29; 2024. doi:10.6028/NIST.CSWP.29",
+    "Verizon. 2025 Data Breach Investigations Report. Nisan 2025. · FBI Internet Crime Complaint Center. 2024 Internet Crime Report. Nisan 2025.",
+    "UK Cabinet Office ve CPNI. New app to counter malicious approaches online (Think Before You Link). 17 Mayıs 2022.",
     "UK NCSC. Advisory: APT29 targets COVID-19 vaccine development. 16 Temmuz 2020. · CISA. ICSMA-23-117-01, Illumina Universal Copy Service. 27 Nisan 2023.",
-    "ABD Adalet Bakanlığı. Basın açıklaması: iki kişi COVID-19 araştırmasını hedef almakla suçlandı. 21 Temmuz 2020. · ABD Ohio Güney Bölgesi Savcılığı. Hastane araştırmacısına ticari sır davasında hapis cezası. 1 Şubat 2021.",
-    "UCSF. Ransomware olayına ilişkin kamu açıklaması. 26 Haziran 2020. · EMA. Siber saldırı açıklamaları. 9 Aralık 2020 ve 15 Ocak 2021.",
+    "UCSF. Ransomware olayına ilişkin kamu açıklaması. 26 Haziran 2020. · EMA. Siber saldırı açıklamaları. 9 Aralık 2020 ve 15 Ocak 2021. · ABD Ohio Güney Bölgesi Savcılığı. 1 Şubat 2021.",
     "7545 sayılı Siber Güvenlik Kanunu. Resmî Gazete 32846, 19 Mart 2025. · KVK Kurulu Kararı 2019/10, veri ihlali bildirimi. · UK NPSA ve NCSC. Trusted Research rehberi.",
 ], size=24)
 
@@ -402,8 +465,9 @@ refs(D, "refs", [
 thanks(D, "thanks", "Sorularınızı bekliyorum. Bu akşam ilk adım olarak kurumsal hesabınızda çok faktörlü doğrulamayı açın.",
        """Soru-cevap. Zaman kalırsa salona sorun: bugün anlatılan beş adımdan hangisi en zor? Cevaplar yarınki masa başı tatbikat için iyi bir giriş olur.""")
 
-SECTIONS = {"s1": {"description": "Neden hedefiz?", "start": "cover"}, "s2": {"description": "Vakalar", "start": "k-cases"},
-            "s3": {"description": "Saldırının anatomisi", "start": "k-chain"}, "s4": {"description": "Savunma", "start": "k-def"},
+SECTIONS = {"s1": {"description": "Neden hedefiz?", "start": "cover"}, "s2": {"description": "Vakalar", "start": "cases"},
+            "s3": {"description": "Saldırının anatomisi", "start": "k-chain"}, "s6": {"description": "Sosyal mühendislik", "start": "k-social"},
+            "s4": {"description": "Savunma", "start": "exfil"},
             "s5": {"description": "Kapanış", "start": "takeaways"}}
 
 if __name__ == "__main__":
